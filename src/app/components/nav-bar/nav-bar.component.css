@@ -3,32 +3,31 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 50px;
   height: 50px;
-  color: #ffffff;
-  position:absolute;  /* queda siempre visible */
+  position:absolute; 
   top: 0;
   width: 100%;
-  z-index: 1000;
-  background-color: rgba(4, 4, 51, 0.413);
+  background-color: white;
 }
 
-.navbar .logo a {
-  color: #ffffff;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
+.navbar .logo a img {
+  width: 25%;
 }
+
 
 .navbar .nav-links a {
-  color: #ffffff;
+  color: #22215B;
   text-decoration: none;
   margin-left: 20px;
-  font-weight: 500;
+  font-size: smaller;
 }
 
 .navbar .nav-links a:hover {
-  color: #ffffff;
+  color: #6993c6;
 }
+
+
+
 
 

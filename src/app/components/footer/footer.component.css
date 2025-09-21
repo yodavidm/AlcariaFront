@@ -1,7 +1,6 @@
-
-
 .footer {
-  background-color: #0a2342;     /* Azul oscuro elegante */
+  background-color: #0a2342;
+  /* Azul oscuro elegante */
   color: #ffffff;
   padding: 40px 20px 20px;
 }
@@ -17,7 +16,8 @@
 
 .footer-left h3 {
   margin-top: 0;
-  color: #f5b400;               /* Amarillo destacado */
+  color: #f5b400;
+  /* Amarillo destacado */
 }
 
 
@@ -39,9 +39,21 @@
 }
 
 .footer-logos img {
-  height: 40px;
-  margin-right: 15px;
+  max-width: 100%;
+  /* nunca será más ancha que su contenedor */
+  height: auto;
+  /* mantiene la proporción */
+  display: block;
+  /* evita espacios fantasma debajo de la imagen */
+  margin: 30px auto 0;
+
 }
+
+.footer-logos {
+  text-align: center;
+}
+
+
 
 .footer-bottom {
   text-align: center;

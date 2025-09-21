@@ -5,24 +5,69 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: #f4f4f4;
-}
+
 
 /* --- SECCION BANNER ALCARIA --- */
 
 .alcariaBanner {
-    padding: 15em 0 8em 0;
-    background-color: #0a2342;
-    /*background-image: url('../../../assets/images/banner.jpg');*/
+    background-image: url('../../../assets/images/headerBanner.png');
     background-size: cover;
     background-position: top;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    text-align: center;
-    color: #ffffff;
+    color: #22215B;
+    padding: 10em;
 }
 
+.title{
+    width: 40%;
+    padding: 2em;
+    text-align: left;    
+}
+
+.title h1{
+    margin-bottom: 1em;
+}
+
+.title button{
+    margin-right: 1em;
+    margin-top: 2em;
+}
+
+/* ============= RESPONSIVE ============= */
+
+/* Pantallas medianas (tablets) */
+@media (max-width: 992px) {
+    .title {
+        width: 60%;
+        margin-left: 2em;
+        padding: 1.5em;
+    }
+}
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+    .alcariaBanner {
+        padding: 10em 0 5em 0;
+        background-attachment: scroll; /* para evitar problemas en móviles */
+    }
+
+    .title {
+        width: 90%;
+        margin: 0 auto; /* centrar */
+        padding: 1em;
+        text-align: center; /* centramos el texto en móviles */
+    }
+
+    .title h1 {
+        font-size: 1.8rem; /* reducir tamaño de fuente si es necesario */
+    }
+
+    .title button {
+        display: block;
+        margin: 1em auto 0 auto; /* centrar botones */
+    }
+}
 
 /* --- FIN SECCION BANNER ALCARIA --- */
 
@@ -31,14 +76,18 @@ body {
 .articles {
     display: flex;
     justify-content: space-around;
-    gap: 20px;
-    padding: 80px 20px;
-}
+    gap: 15px;
+    padding: 80px;
+    background-image: url('../../../assets/images/pencils.png');
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;}
 
 .articles article {
-    width: 30rem;
+    width: 22rem;
     height: auto;
-    background: #ffffff;
+    background-color: #f4f8fa;
     border-radius: 1.5rem;
     padding: 1.5rem;
     overflow: hidden;
@@ -52,6 +101,10 @@ body {
     transform: translateY(-10px);
     /* sube un poco */
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.articles article p{
+    font-size: medium;
 }
 
 
@@ -72,12 +125,12 @@ body {
 .news-title {
     color: #22215B;
     padding: 1rem 0;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .description {
-    color: #22215B80;
-    font-size: 1rem;
+    color: #22215B;
+    font-size: 0.5rem;
 }
 
 
@@ -85,7 +138,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .options span {
@@ -93,7 +146,11 @@ body {
     color: #22215B;
     cursor: pointer;
     padding: 1rem 0;
+}
 
+.options span:hover {
+    /* aumenta sombra y levanta la card */
+    color: #6993c6;
 }
 
 /* ---FIN SECCIÓN NOTICIAS ALCARIA --- */
@@ -101,28 +158,57 @@ body {
 /* --- SECCIÓN ALCARIA TIMES --- */
 
 .alcariaTimes {
-    padding: 40px 20px;
-    color: rgb(255, 255, 255);
-}
+    background-color: grey;
+    height: 30em;
 
-.timesContainer {
-    background-color: #0a2342;
-    border-radius: 1.5rem;
-    width: 80%;
-    margin: 0 auto;
+    /* centro horizontal y vertical usando flexbox */
+    display: flex;
+    justify-content: center;
+    /* horizontal */
+    align-items: center;
+    /* vertical */
+    color: white;
     text-align: center;
+    background-image: url(../../../assets/images/background.png);
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
-.timesContainer img {
-    width: 100%;
-    height: auto;
-    max-height: 15rem;
-    object-fit: cover;
-    border-radius: 1.5rem;
+.timesText {
+    padding: 2em;
+    color: #22215B;
+    background-color: #ffffff98;
+    /* opcional para que respire */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+
 }
 
-.timesCentro {
-    padding: 10em;
+.timesText h3 {
+    margin-top: 1em;
+}
+
+.btn {
+    background-color: #22215B;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+
+}
+
+.btn:hover {
+    background-color: #6993c6;
+    /* Green */
+    color: white;
+    cursor: pointer;
 }
 
 /* --- FIN SECCIÓN ALCARIA TIMES --- */
