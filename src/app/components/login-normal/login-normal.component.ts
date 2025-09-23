@@ -1,26 +1,25 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../services/login.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { LoginRequest } from '../../interfaces/login-request';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-login-activate',
+  selector: 'app-login-normal',
   standalone: true,
-  imports: [FormsModule,CommonModule],
-  templateUrl: './login-activate.component.html',
-  styleUrl: './login-activate.component.css'
+  imports: [FormsModule],
+  templateUrl: './login-normal.component.html',
+  styleUrl: './login-normal.component.css'
 })
-export class LoginActivateComponent {
+export class LoginNormalComponent {
 
   constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute) { }
+
 
   login: LoginRequest = {
     email: '',
     password: ''
   };
-
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.login.email = params['email'] || '';
@@ -28,12 +27,12 @@ export class LoginActivateComponent {
   }
 
   onSubmit() {
-      // Validar la contraseña manualmente
-  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
-  if (!passwordPattern.test(this.login.password)) {
-    alert('La contraseña debe tener mínimo 6 caracteres, incluyendo mayúscula, minúscula y número');
-    return;
-  }
+    // Validar la contraseña manualmente
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+    if (!passwordPattern.test(this.login.password)) {
+      alert('La contraseña debe tener mínimo 6 caracteres, incluyendo mayúscula, minúscula y número');
+      return;
+    }
     this.loginService.doLoginActivate(this.login).subscribe({
       next: (data) => {
         console.log("Cuenta activada correctamente");
@@ -48,4 +47,6 @@ export class LoginActivateComponent {
       }
     })
   }
+
+
 }

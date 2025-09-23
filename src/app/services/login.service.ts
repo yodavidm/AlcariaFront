@@ -9,17 +9,23 @@ import { TokenResponse } from '../interfaces/token-response';
 })
 export class LoginService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-    private baseUrl = 'http://localhost:8080/auth';
-  
-  
-    doLogin(login: LoginRequest): Observable<TokenResponse> {
-      return this.http.post<TokenResponse>(this.baseUrl + '/login', login);
-    }
+  private baseUrl = 'http://localhost:8080/auth';
 
-    doLoginActivate(login: LoginRequest) : Observable<TokenResponse>{
-      return this.http.post<TokenResponse>(this.baseUrl + '/activate-account',login);
-    }
+
+  doLogin(login: LoginRequest): Observable<TokenResponse> {
+    return this.http.post<TokenResponse>(this.baseUrl + '/login', login);
+  }
+
+  doLoginActivate(login: LoginRequest): Observable<TokenResponse> {
+    return this.http.post<TokenResponse>(this.baseUrl + '/activate-account', login);
+  }
+
+  isAccountActive(email: string): Observable<boolean> {
+    const params = { email: email }; // o { email } con ES6 shorthand
+
+    return this.http.get<boolean>(this.baseUrl + '/account-active', { params: { email } });
+  }
 
 }

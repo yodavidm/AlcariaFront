@@ -20,42 +20,25 @@ export class LoginComponent {
     password: ''
   };
 
-  onSubmit() {
-    this.loginService.doLogin(this.login).subscribe({
-      next: (data) => {
-        console.log("Login iniciado correctamente");
-        localStorage.setItem('access_token', data.accessToken);
-        localStorage.setItem('refresh_token', data.refreshToken);
-        this.router.navigate(['/home']);
+  emailCheck: string = '';
 
-      },
-      error: (er) => {
-        console.log("error en login", er);
-
-      }
-    })
-  }
-
-  onLogin() {
-    this.loginService.doLogin(this.login).subscribe({
-      next: data => {
-        console.log("Login iniciado correctamente");
-        console.log("Login iniciado correctamente");
-        localStorage.setItem('access_token', data.accessToken);
-        localStorage.setItem('refresh_token', data.refreshToken);
-        this.router.navigate(['home']);
-      },
-
-      error: err => {
-        if (err.status === 403) { // o el status que hayas usado
-          alert('Tu cuenta aún no está activada. Por favor actívala primero.');
-          this.router.navigate(['activar-cuenta'])
-          // aquí puedes redirigir a la página de activación
+  onAccountCheck() {
+    this.loginService.isAccountActive(this.emailCheck).subscribe({
+      next: isActive => {
+        if (isActive) {
+          alert("Puede logear con normalidad")
+          this.router.navigate(['login-normal'],{ queryParams: { email: this.emailCheck } });
         } else {
-          alert('Credenciales incorrectas o error de servidor');
+          alert("Vaya! Parece que tu cuenta aún no está activada")
+          this.router.navigate(['activar-cuenta'],{ queryParams: { email: this.emailCheck } });
         }
+      },
+      error: err => {
+        alert("Usuario " + this.emailCheck + " no encontrado")
+        console.error(err);
       }
     });
   }
+
 
 }
