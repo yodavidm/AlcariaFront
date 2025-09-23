@@ -19,17 +19,17 @@
     padding: 10em;
 }
 
-.title{
+.title {
     width: 40%;
     padding: 2em;
-    text-align: left;    
+    text-align: left;
 }
 
-.title h1{
+.title h1 {
     margin-bottom: 1em;
 }
 
-.title button{
+.title button {
     margin-right: 1em;
     margin-top: 2em;
 }
@@ -49,23 +49,28 @@
 @media (max-width: 600px) {
     .alcariaBanner {
         padding: 10em 0 5em 0;
-        background-attachment: scroll; /* para evitar problemas en móviles */
+        background-attachment: scroll;
+        /* para evitar problemas en móviles */
     }
 
     .title {
         width: 90%;
-        margin: 0 auto; /* centrar */
+        margin: 0 auto;
+        /* centrar */
         padding: 1em;
-        text-align: center; /* centramos el texto en móviles */
+        text-align: center;
+        /* centramos el texto en móviles */
     }
 
     .title h1 {
-        font-size: 1.8rem; /* reducir tamaño de fuente si es necesario */
+        font-size: 1.8rem;
+        /* reducir tamaño de fuente si es necesario */
     }
 
     .title button {
         display: block;
-        margin: 1em auto 0 auto; /* centrar botones */
+        margin: 1em auto 0 auto;
+        /* centrar botones */
     }
 }
 
@@ -82,18 +87,21 @@
     background-size: cover;
     background-position: top;
     background-attachment: fixed;
-    background-repeat: no-repeat;}
+    background-repeat: no-repeat;
+}
 
 .articles article {
     width: 22rem;
     height: auto;
-    background-color: #f4f8fa;
-    border-radius: 1.5rem;
+    background-color: #ffffff;
     padding: 1.5rem;
     overflow: hidden;
     position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-top: 2px solid #22215bb4;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top-left-radius: 20px;
+
 }
 
 .articles article:hover {
@@ -102,11 +110,6 @@
     /* sube un poco */
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
-
-.articles article p{
-    font-size: medium;
-}
-
 
 .articleImageHolder {
     width: 100%;
@@ -130,7 +133,7 @@
 
 .description {
     color: #22215B;
-    font-size: 0.5rem;
+    font-size: 0.9rem;
 }
 
 
@@ -182,7 +185,7 @@
     background-color: #ffffff98;
     /* opcional para que respire */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    
+
 
 }
 
