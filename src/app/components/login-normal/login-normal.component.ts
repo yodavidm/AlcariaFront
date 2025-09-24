@@ -33,13 +33,12 @@ export class LoginNormalComponent {
       alert('La contraseña debe tener mínimo 6 caracteres, incluyendo mayúscula, minúscula y número');
       return;
     }
-    this.loginService.doLoginActivate(this.login).subscribe({
+    this.loginService.doLogin(this.login).subscribe({
       next: (data) => {
-        console.log("Cuenta activada correctamente");
-        localStorage.setItem('access_token', data.accessToken);
-        localStorage.setItem('refresh_token', data.refreshToken);
-        this.router.navigate(['/home']);
-
+        localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('refresh_token', data.refresh_token);
+        alert("Cuenta iniciada correctamente" + localStorage.getItem('access_token'));
+        window.location.href = '/home';
       },
       error: (er) => {
         console.log("error activando cuenta", er);

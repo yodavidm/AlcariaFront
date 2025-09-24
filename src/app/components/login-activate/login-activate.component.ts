@@ -36,10 +36,10 @@ export class LoginActivateComponent {
   }
     this.loginService.doLoginActivate(this.login).subscribe({
       next: (data) => {
-        console.log("Cuenta activada correctamente");
-        localStorage.setItem('access_token', data.accessToken);
-        localStorage.setItem('refresh_token', data.refreshToken);
-        this.router.navigate(['/home']);
+        alert("Cuenta activada correctamente");
+        localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('refresh_token', data.refresh_token);
+        window.location.href = '/home';
 
       },
       error: (er) => {

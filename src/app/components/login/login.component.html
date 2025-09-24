@@ -6,7 +6,7 @@
             <label for="email">Correo electrónico</label>
             <input type="email" id="email" [(ngModel)]="emailCheck" name="email"  placeholder="tuemail@ejemplo.com" required>
             <div class="forgot-wrapper">
-                <a class="olvidar" href="#">¿Olvidaste tu contraseña?</a>
+                <a class="olvidar" href="" (click)="pajo()">¿Olvidaste tu contraseña?</a>
             </div> <br>
 
             <button type="submit">Entrar</button>

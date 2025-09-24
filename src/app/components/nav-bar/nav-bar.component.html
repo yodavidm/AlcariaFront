@@ -1,14 +1,24 @@
 <header class="navbar">
   <div class="logo">
-    <a href=""><img src="assets/images/logo.png" alt="logo"></a>
+    <a routerLink="home"><img src="assets/images/logo.png" alt="logo"></a>
   </div>
 
   <nav class="nav-links">
-    <a routerLink="">Inicio</a>
-    <a routerLink="equipo">Equipo Directivo</a>
+    <a routerLink="home">Inicio</a>
     <a routerLink="">Biblioteca</a>
-    <a routerLink="">Acerca de</a>
-    <a routerLink="">Secretaría</a>
-    <a routerLink="login">Iniciar sesión</a>
+    <a routerLink="">Pendientes</a>
+    <a routerLink="">Alcaria Internacional</a>
+    <a routerLink="">Filmoteca</a>
+    <a routerLink="">Onda Alcaria</a>
+    <a routerLink="">Sierra Nevada</a>
+
+
+
+
+    <!-- Login si NO está logueado -->
+    <a *ngIf="!isLoggedIn" routerLink="login">Iniciar sesión</a>
+    <!-- Logout si SÍ está logueado -->
+    <a *ngIf="isLoggedIn" (click)="logout()" style="cursor:pointer;">Cerrar sesión</a>
+
   </nav>
 </header>

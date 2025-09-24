@@ -1,13 +1,21 @@
 /* === Contenedor general === */
 .login-container {
   /* Empuja el contenido hacia abajo para no ser tapado por la navbar */
-  padding-top: 100px; /* ajusta según la altura real de tu navbar */
-  min-height: calc(100vh - 100px); /* ocupa la altura de la pantalla menos la navbar */
+  padding-top: 100px;
+  /* ajusta según la altura real de tu navbar */
+  min-height: calc(100vh - 100px);
+  /* ocupa la altura de la pantalla menos la navbar */
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f7f7f7; /* color de fondo suave */
+  background: #f7f7f7;
+  /* color de fondo suave */
   padding-bottom: 60px;
+  background-image: url('../../../assets/images/headerBanner.png');
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 /* === Caja del login === */
@@ -17,7 +25,7 @@
   width: 100%;
   max-width: 400px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
@@ -57,6 +65,7 @@
   cursor: pointer;
   transition: background 0.3s;
 }
+
 .login-box button:hover {
   background: #6993c6;
 }
@@ -78,8 +87,10 @@
 /* Contenedor del enlace, para poder alinearlo */
 .forgot-wrapper {
   display: flex;
-  justify-content: flex-start; /* lo envía a la derecha */
-  margin-bottom: 1.2rem;     /* espacio antes del botón */
+  justify-content: flex-start;
+  /* lo envía a la derecha */
+  margin-bottom: 1.2rem;
+  /* espacio antes del botón */
 }
 
 .olvidar {
@@ -97,13 +108,13 @@
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
   .forgot-wrapper {
-    justify-content: center; /* en móviles lo centramos si prefieres */
+    justify-content: center;
+    /* en móviles lo centramos si prefieres */
   }
 }
 
-img{
-    width: 40%;
-    margin-bottom: 1em;
-    margin-left: 1em;
+img {
+  width: 40%;
+  margin-bottom: 1em;
+  margin-left: 1em;
 }
-

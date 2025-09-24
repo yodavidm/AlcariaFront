@@ -40,5 +40,9 @@ export class LoginComponent {
     });
   }
 
+  pajo(){
+    alert("ERES UN PAJO")
+  }
+
 
 }

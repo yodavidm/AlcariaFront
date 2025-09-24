@@ -1,0 +1,63 @@
+.container {
+
+    background-image: url('../../../assets/images/headerBanner.png');
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    padding-top: 100px;
+    /* ajusta según la altura real de tu navbar */
+    min-height: calc(100vh - 100px);
+    /* ocupa la altura de la pantalla menos la navbar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 60px;
+    flex-wrap: wrap; 
+    gap: 30px;
+
+}
+
+.card {
+    flex: 1 1 calc(33.333% - 60px);
+    /* 🔑 Máx 3 por fila (resta el gap total) */
+    max-width: 22rem;
+    /* Opcional: no más de 22rem de ancho */
+    background-color: #ffffff;
+    padding: 1.5rem;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    color: #22215B;
+}
+
+.card h1{
+    font-size: medium;
+}
+
+.card:hover{
+        transform: translateY(-10px);
+    /* sube un poco */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card img{
+    margin-bottom: 2em;
+}
+
+@media (max-width: 900px) {
+    .card {
+        flex: 1 1 calc(50% - 60px);
+        /* 2 por fila */
+    }
+}
+
+@media (max-width: 600px) {
+    .card {
+        flex: 1 1 100%;
+        /* 1 por fila */
+    }
+}
