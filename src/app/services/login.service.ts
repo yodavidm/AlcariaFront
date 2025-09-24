@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginRequest } from '../interfaces/login-request';
 import { TokenResponse } from '../interfaces/token-response';
+import { UserCheckResponse } from '../interfaces/user-check-response';
 
 @Injectable({
   providedIn: 'root'
@@ -22,10 +23,10 @@ export class LoginService {
     return this.http.post<TokenResponse>(this.baseUrl + '/activate-account', login);
   }
 
-  isAccountActive(email: string): Observable<boolean> {
+  isAccountActive(email: string): Observable<UserCheckResponse> {
     const params = { email: email }; // o { email } con ES6 shorthand
 
-    return this.http.get<boolean>(this.baseUrl + '/account-active', { params: { email } });
+    return this.http.get<UserCheckResponse>(this.baseUrl + '/check-user', { params: { email } });
   }
 
 }

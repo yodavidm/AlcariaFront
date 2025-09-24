@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoginRequest } from '../../interfaces/login-request';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ErrorResponse } from '../../interfaces/error-response';
 
 @Component({
   selector: 'app-login-activate',
@@ -28,12 +29,7 @@ export class LoginActivateComponent {
   }
 
   onSubmit() {
-      // Validar la contraseña manualmente
-  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
-  if (!passwordPattern.test(this.login.password)) {
-    alert('La contraseña debe tener mínimo 6 caracteres, incluyendo mayúscula, minúscula y número');
-    return;
-  }
+ 
     this.loginService.doLoginActivate(this.login).subscribe({
       next: (data) => {
         alert("Cuenta activada correctamente");
@@ -42,9 +38,17 @@ export class LoginActivateComponent {
         window.location.href = '/home';
 
       },
-      error: (er) => {
-        console.log("error activando cuenta", er);
-
+      error: (err) => {
+          const apiErr = err.error as ErrorResponse;
+  
+          // 👇 Aquí llegan las excepciones que lanza el backend
+          if (apiErr.status === 400) {
+            alert(apiErr.message);
+          }
+          else {
+            console.error(apiErr);
+            alert('Error inesperado en el servidor');
+          }
       }
     })
   }

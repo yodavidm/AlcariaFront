@@ -2,7 +2,7 @@
     <div class="login-box">
         <img src="../../../assets/images/pajaro.png" alt="pajaro">
         <h2>Iniciar sesión</h2>
-        <form (ngSubmit)="onAccountCheck()">
+        <form (ngSubmit)="onAccountCheckActiveOrExist()">
             <label for="email">Correo electrónico</label>
             <input type="email" id="email" [(ngModel)]="emailCheck" name="email"  placeholder="tuemail@ejemplo.com" required>
             <div class="forgot-wrapper">
