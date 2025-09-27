@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { UserCheckResponse } from '../../interfaces/user-check-response';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorResponse } from '../../interfaces/error-response';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ import { ErrorResponse } from '../../interfaces/error-response';
 })
 export class LoginComponent {
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private loginService: LoginService, private router: Router, private toastr: ToastrService) { }
 
   login: LoginRequest = {
     email: '',
@@ -38,30 +39,30 @@ export class LoginComponent {
     alert("ERES UN PAJO")
   }
 
-  
-onAccountCheckActiveOrExist() {
-  this.loginService.isAccountActive(this.emailCheck).subscribe({
-    next: user => {
-      // Si la cuenta existe y está activa
-      this.router.navigate(['login-normal'], { queryParams: { email: this.emailCheck } });
-    },
-    error: (err: HttpErrorResponse) => {
 
-      const apiErr = err.error as ErrorResponse;
+  onAccountCheckActiveOrExist() {
+    this.loginService.isAccountActive(this.emailCheck).subscribe({
+      next: user => {
+        // Si la cuenta existe y está activa
+        this.router.navigate(['login-normal'], { queryParams: { email: this.emailCheck } });
+      },
+      error: (err: HttpErrorResponse) => {
 
-      // 👇 Aquí llegan las excepciones que lanza el backend
-      if (apiErr.status === 404) {
-        alert(apiErr.message);
-      } else if (apiErr.status === 409) {
-        alert(apiErr.message);
-        this.router.navigate(['activar-cuenta'], { queryParams: { email: this.emailCheck } });
-      } else {
-        console.error(apiErr);
-        alert('Error inesperado en el servidor');
+        const apiErr = err.error as ErrorResponse;
+
+        // 👇 Aquí llegan las excepciones que lanza el backend
+        if (apiErr.status === 404) {
+          this.toastr.error(apiErr.message);
+        } else if (apiErr.status === 409) {
+          this.toastr.info(apiErr.message);
+          this.router.navigate(['activar-cuenta'], { queryParams: { email: this.emailCheck } });
+        } else {
+          console.error(apiErr);
+          this.toastr.error('Error inesperado en el servidor');
+        }
       }
-    }
-  });
-}
+    });
+  }
 
 
 

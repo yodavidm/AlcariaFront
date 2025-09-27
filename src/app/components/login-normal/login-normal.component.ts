@@ -4,6 +4,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { LoginRequest } from '../../interfaces/login-request';
 import { FormsModule } from '@angular/forms';
 import { ErrorResponse } from '../../interfaces/error-response';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-normal',
@@ -14,7 +15,7 @@ import { ErrorResponse } from '../../interfaces/error-response';
 })
 export class LoginNormalComponent {
 
-  constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute, private toastr: ToastrService) { }
 
 
   login: LoginRequest = {
@@ -27,30 +28,15 @@ export class LoginNormalComponent {
     });
   }
 
+
   onSubmit() {
 
     this.loginService.doLogin(this.login).subscribe({
       next: (data) => {
+        this.toastr.success("Cuenta iniciada correctamente");
         localStorage.setItem('access_token', data.access_token);
         localStorage.setItem('refresh_token', data.refresh_token);
-        alert("Cuenta iniciada correctamente" + localStorage.getItem('access_token'));
-        window.location.href = '/home';
-      },
-      error: (er) => {
-        console.log("error activando cuenta", er);
-
-      }
-    })
-  }
-
-
-  onSubmitExcepciones() {
-
-    this.loginService.doLogin(this.login).subscribe({
-      next: (data) => {
-        localStorage.setItem('access_token', data.access_token);
-        localStorage.setItem('refresh_token', data.refresh_token);
-        alert("Cuenta iniciada correctamente" + localStorage.getItem('access_token'));
+        localStorage.setItem('login_success', 'true'); //mantener toast para home
         window.location.href = '/home';
       },
       error: (err) => {
@@ -58,11 +44,11 @@ export class LoginNormalComponent {
 
         // 👇 Aquí llegan las excepciones que lanza el backend
         if (apiErr.status === 401) {
-          alert(apiErr.message);
+          this.toastr.error(apiErr.message);
         }
         else {
           console.error(apiErr);
-          alert('Error inesperado en el servidor');
+          this.toastr.error('Error inesperado en el servidor');
         }
       }
     })
