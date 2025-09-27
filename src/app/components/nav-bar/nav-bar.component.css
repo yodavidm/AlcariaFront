@@ -1,11 +1,11 @@
-/* navbar básico */
+/* --- Estructura base --- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 50px;
-  height: 40px;
-  position:absolute; 
+  height: 60px;
+  position: absolute;
   top: 0;
   width: 100%;
   background-color: white;
@@ -14,7 +14,6 @@
 .navbar .logo a img {
   width: 25%;
 }
-
 
 .navbar .nav-links a {
   color: #22215B;
@@ -27,7 +26,46 @@
   color: #6993c6;
 }
 
+/* --- Botón hamburguesa (escondido en escritorio) --- */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #22215B;
+}
 
+/* --- Móvil --- */
+@media (max-width: 1280px) {
+  .menu-toggle {
+    display: block;
+    /* visible solo en móvil */
+  }
 
+  /* El menú pasa a vertical y se oculta por defecto */
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    /* justo debajo del header */
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    /* oculto inicialmente */
+    padding: 1rem 0;
+    border-top: 1px solid #ddd;
+  }
 
+  .nav-links a {
+    margin: 10px 0;
+    font-size: 1rem;
+  }
 
+  /* Cuando se abre el menú */
+  .nav-links.open {
+    display: flex;
+  }
+}

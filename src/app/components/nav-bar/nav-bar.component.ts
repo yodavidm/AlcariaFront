@@ -19,6 +19,16 @@ export class NavBarComponent {
     this.checkLogin();
   }
 
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu() {
+    this.menuOpen = false;
+  }
+
   // Revisar si hay token en localStorage
   checkLogin() {
     const token = localStorage.getItem('access_token');

@@ -34,35 +34,15 @@ export class LoginComponent {
     coordinator: false,
     isAccountActive: false
   }
-
-  onAccountCheck() {
-    this.loginService.isAccountActive(this.emailCheck).subscribe({
-      next: isActive => {
-        if (isActive) {
-          alert("Puede logear con normalidad")
-          this.router.navigate(['login-normal'], { queryParams: { email: this.emailCheck } });
-        } else {
-          alert("Vaya! Parece que tu cuenta aún no está activada")
-          this.router.navigate(['activar-cuenta'], { queryParams: { email: this.emailCheck } });
-        }
-      },
-      error: err => {
-        alert("Usuario " + this.emailCheck + " no encontrado")
-        console.error(err);
-      }
-    });
-  }
-
   pajo() {
     alert("ERES UN PAJO")
   }
 
   
-  // tu-componente.ts
 onAccountCheckActiveOrExist() {
   this.loginService.isAccountActive(this.emailCheck).subscribe({
     next: user => {
-      // ✅ Solo se ejecuta si la respuesta es 2xx (cuenta activa en tu caso)
+      // Si la cuenta existe y está activa
       this.router.navigate(['login-normal'], { queryParams: { email: this.emailCheck } });
     },
     error: (err: HttpErrorResponse) => {

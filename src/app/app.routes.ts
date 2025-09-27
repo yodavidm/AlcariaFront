@@ -4,6 +4,7 @@ import { EquipoDirectivoComponent } from './components/equipo-directivo/equipo-d
 import { LoginComponent } from './components/login/login.component';
 import { LoginActivateComponent } from './components/login-activate/login-activate.component';
 import { LoginNormalComponent } from './components/login-normal/login-normal.component';
+import { UploadCsvComponent } from './components/upload-csv/upload-csv.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -11,6 +12,7 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent },
     { path: 'activar-cuenta', component: LoginActivateComponent },
-    { path: 'login-normal', component: LoginNormalComponent }
+    { path: 'login-normal', component: LoginNormalComponent },
+    { path: 'uploadCSV', component: UploadCsvComponent }
 
 ];

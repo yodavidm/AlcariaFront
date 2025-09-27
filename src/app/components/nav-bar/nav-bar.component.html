@@ -3,22 +3,23 @@
     <a routerLink="home"><img src="assets/images/logo.png" alt="logo"></a>
   </div>
 
-  <nav class="nav-links">
-    <a routerLink="home">Inicio</a>
-    <a routerLink="">Biblioteca</a>
-    <a routerLink="">Pendientes</a>
-    <a routerLink="">Alcaria Internacional</a>
-    <a routerLink="">Filmoteca</a>
-    <a routerLink="">Onda Alcaria</a>
-    <a routerLink="">Sierra Nevada</a>
+  <!-- Botón hamburguesa -->
+  <button class="menu-toggle" (click)="toggleMenu()">
+    ☰
+  </button>
 
+  <nav class="nav-links" [class.open]="menuOpen">
+    <a routerLink="home" (click)="closeMenu()">Inicio</a>
+    <a routerLink="" (click)="closeMenu()">Biblioteca</a>
+    <a routerLink="" (click)="closeMenu()">Pendientes</a>
+    <a routerLink="" (click)="closeMenu()">Alcaria Internacional</a>
+    <a routerLink="" (click)="closeMenu()">Filmoteca</a>
+    <a routerLink="" (click)="closeMenu()">Onda Alcaria</a>
+    <a routerLink="" (click)="closeMenu()">Sierra Nevada</a>
 
-
-
-    <!-- Login si NO está logueado -->
-    <a *ngIf="!isLoggedIn" routerLink="login">Iniciar sesión</a>
-    <!-- Logout si SÍ está logueado -->
-    <a *ngIf="isLoggedIn" (click)="logout()" style="cursor:pointer;">Cerrar sesión</a>
-
+    <a *ngIf="!isLoggedIn" routerLink="login" (click)="closeMenu()">Iniciar sesión</a>
+    <a *ngIf="isLoggedIn" (click)="logout(); closeMenu()" style="cursor:pointer;">Cerrar sesión</a>
+    <a *ngIf="isLoggedIn" routerLink="/uploadCSV" (click)="closeMenu()" style="cursor:pointer;">Subir CSV</a>
   </nav>
+
 </header>
