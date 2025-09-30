@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoginRequest } from '../interfaces/login-request';
-import { TokenResponse } from '../interfaces/token-response';
-import { UserCheckResponse } from '../interfaces/user-check-response';
+import { LoginRequest } from '../../interfaces/main-faces/login-request';
+import { TokenResponse } from '../../interfaces/main-faces/token-response';
+import { UserCheckResponse } from '../../interfaces/main-faces/user-check-response';
 
 @Injectable({
   providedIn: 'root'

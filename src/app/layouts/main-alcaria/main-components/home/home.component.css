@@ -8,7 +8,7 @@
 /* --- SECCION BANNER ALCARIA --- */
 
 .alcariaBanner {
-    background-image: url('../../../assets/images/headerBanner.png');
+    background-image: url('../../../../../assets/images/headerBanner.png');
     background-size: cover;
     background-position: top;
     background-attachment: fixed;
@@ -75,7 +75,7 @@
     justify-content: space-around;
     gap: 15px;
     padding: 80px;
-    background-image: url('../../../assets/images/pencils.png');
+    background-image: url('../../../../../assets/images/pencils.png');
     background-size: cover;
     background-position: top;
     background-attachment: fixed;
@@ -164,7 +164,7 @@
     /* vertical */
     color: white;
     text-align: center;
-    background-image: url(../../../assets/images/background.png);
+    background-image: url(../../../../../assets/images/background.png);
     background-size: cover;
     background-position: top;
     background-attachment: fixed;
@@ -211,7 +211,7 @@
 /* --- SECCIÓN BANNER EDUCACION --- */
 .educacion {
     padding: 5em 0 10em 0;
-    background-image: url('../../../assets/images/educacion.png');
+    background-image: url('../../../../../assets/images/educacion.png');
     background-position: center;
     background-repeat: no-repeat;
     text-align: center;

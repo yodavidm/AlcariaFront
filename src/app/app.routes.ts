@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { EquipoDirectivoComponent } from './components/equipo-directivo/equipo-directivo.component';
-import { LoginComponent } from './components/login/login.component';
-import { LoginActivateComponent } from './components/login-activate/login-activate.component';
-import { LoginNormalComponent } from './components/login-normal/login-normal.component';
-import { UploadCsvComponent } from './components/upload-csv/upload-csv.component';
-import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { HomeComponent } from './layouts/main-alcaria/main-components/home/home.component';
+import { EquipoDirectivoComponent } from './layouts/main-alcaria/main-components/equipo-directivo/equipo-directivo.component';
+import { LoginComponent } from './layouts/main-alcaria/main-components/login/login.component';
+import { LoginActivateComponent } from './layouts/main-alcaria/main-components/login-activate/login-activate.component';
+import { LoginNormalComponent } from './layouts/main-alcaria/main-components/login-normal/login-normal.component';
+import { UploadCsvComponent } from './layouts/main-alcaria/main-components/upload-csv/upload-csv.component';
+import { MainLayoutComponent } from './layouts/main-alcaria/main-layout/main-layout.component';
 import { DashLayoutComponent } from './layouts/dash/dash-layout/dash-layout.component';
 
 export const routes: Routes = [
@@ -24,7 +24,7 @@ export const routes: Routes = [
     },
 
         {
-        path: 'dash',
+        path: 'dashboard',
         component: DashLayoutComponent,
         children: [
             { path: '', component: HomeComponent },

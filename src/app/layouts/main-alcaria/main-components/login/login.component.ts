@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { LoginService } from '../../services/login.service';
+import { LoginService } from '../../../../services/main-services/login.service';
 import { Router } from '@angular/router';
-import { LoginRequest } from '../../interfaces/login-request';
+import { LoginRequest } from '../../../../interfaces/main-faces/login-request';
 import { FormsModule } from '@angular/forms';
-import { UserCheckResponse } from '../../interfaces/user-check-response';
+import { UserCheckResponse } from '../../../../interfaces/main-faces/user-check-response';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ErrorResponse } from '../../interfaces/error-response';
+import { ErrorResponse } from '../../../../interfaces/main-faces/error-response';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

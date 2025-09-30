@@ -8,7 +8,7 @@
   align-items: center;
   background: #f7f7f7; /* color de fondo suave */
   padding-bottom: 60px;
-      background-image: url('../../../assets/images/headerBanner.png');
+      background-image: url('../../../../../assets/images/headerBanner.png');
     background-size: cover;
     background-position: top;
     background-attachment: fixed;

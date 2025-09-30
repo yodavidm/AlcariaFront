@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UploadCsvService } from '../../services/upload-csv.service';
+import { UploadCsvService } from '../../../../services/main-services/upload-csv.service';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 

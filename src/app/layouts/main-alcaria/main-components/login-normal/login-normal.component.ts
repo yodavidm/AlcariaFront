@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { LoginService } from '../../services/login.service';
+import { LoginService } from '../../../../services/main-services/login.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { LoginRequest } from '../../interfaces/login-request';
+import { LoginRequest } from '../../../../interfaces/main-faces/login-request';
 import { FormsModule } from '@angular/forms';
-import { ErrorResponse } from '../../interfaces/error-response';
+import { ErrorResponse } from '../../../../interfaces/main-faces/error-response';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
