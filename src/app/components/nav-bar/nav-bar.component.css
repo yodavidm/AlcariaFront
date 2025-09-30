@@ -36,6 +36,9 @@
   color: #22215B;
 }
 
+.dashboard{
+}
+
 /* --- Móvil --- */
 @media (max-width: 1280px) {
   .menu-toggle {

@@ -1,63 +1,129 @@
-.container {
-
+.fondo {
     background-image: url('../../../assets/images/headerBanner.png');
     background-size: cover;
     background-position: top;
     background-attachment: fixed;
     background-repeat: no-repeat;
-
-    padding-top: 100px;
-    /* ajusta según la altura real de tu navbar */
-    min-height: calc(100vh - 100px);
-    /* ocupa la altura de la pantalla menos la navbar */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 60px;
-    flex-wrap: wrap; 
-    gap: 30px;
-
 }
 
-.card {
-    flex: 1 1 calc(33.333% - 60px);
-    /* 🔑 Máx 3 por fila (resta el gap total) */
-    max-width: 22rem;
-    /* Opcional: no más de 22rem de ancho */
-    background-color: #ffffff;
-    padding: 1.5rem;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
+.org-wrap {
+    padding-top: 7em;
+    width: 100%;
+    padding-bottom: 7em;
+    max-width: 980px;
+    margin: auto;
     color: #22215B;
+    background-color: white;
 }
 
-.card h1{
-    font-size: medium;
+/* Tarjeta del director */
+.director {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 18px 24px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    width: 300px;
+    margin: 0 auto 28px auto;
+    position: relative;
+    border: 1px solid #e6ecf0;
 }
 
-.card:hover{
-        transform: translateY(-10px);
-    /* sube un poco */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+.director h3 {
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: 0.2px;
 }
 
-.card img{
-    margin-bottom: 2em;
+.director p {
+    margin: 6px 0 0 0;
+    color: var(--muted);
+    font-size: 13px;
 }
 
-@media (max-width: 900px) {
-    .card {
-        flex: 1 1 calc(50% - 60px);
-        /* 2 por fila */
+
+
+/* Contenedor de los miembros */
+.members {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 22px;
+    align-items: start;
+    padding: 0 12px;
+}
+
+
+.member {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid #e6ecf0;
+    position: relative;
+    z-index: 1;
+    min-height: 84px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.member h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.member small {
+    display: block;
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+
+
+/* Pequeña decoración / avatar circular */
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #163a59 0%, #234a66 100%);
+    display: inline-block;
+    margin: 0 auto 8px auto;
+    box-shadow: 0 3px 8px rgba(18, 52, 90, 0.12);
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+/* Responsive: menos columnas en pantallas pequeñas */
+@media (max-width:880px) {
+    .members {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (max-width: 600px) {
-    .card {
-        flex: 1 1 100%;
-        /* 1 por fila */
+@media (max-width:560px) {
+    .members {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 16px;
     }
+
+
+    .director {
+        width: 240px;
+    }
+}
+
+/* Pequeño título */
+.title {
+    margin: 0 0 18px 0;
+    text-align: center;
+    font-size: 18px;
+    color: var(--accent);
+    font-weight: 600;
 }
