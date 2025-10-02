@@ -7,6 +7,8 @@ import { LoginNormalComponent } from './layouts/main-alcaria/main-components/log
 import { UploadCsvComponent } from './layouts/main-alcaria/main-components/upload-csv/upload-csv.component';
 import { MainLayoutComponent } from './layouts/main-alcaria/main-layout/main-layout.component';
 import { DashLayoutComponent } from './layouts/dash/dash-layout/dash-layout.component';
+import { PublicationComponent } from './layouts/dash/dash-components/crear-publicacion/publication.component';
+import { VerPublicacionesComponent } from './layouts/dash/dash-components/ver-publicaciones/ver-publicaciones.component';
 
 export const routes: Routes = [
     {
@@ -18,17 +20,18 @@ export const routes: Routes = [
             { path: 'login', component: LoginComponent },
             { path: 'home', component: HomeComponent },
             { path: 'activar-cuenta', component: LoginActivateComponent },
-            { path: 'login-normal', component: LoginNormalComponent },
-            { path: 'uploadCSV', component: UploadCsvComponent }
-        ]
+            { path: 'login-normal', component: LoginNormalComponent }]
     },
 
-        {
+    {
         path: 'dashboard',
         component: DashLayoutComponent,
         children: [
-            { path: '', component: HomeComponent },
             { path: 'uploadCSV', component: UploadCsvComponent },
+            { path: 'crear-publicacion', component: PublicationComponent },
+            { path: 'publicaciones', component: VerPublicacionesComponent },
+            { path: 'uploadCSV', component: UploadCsvComponent }
+
         ]
     }
 

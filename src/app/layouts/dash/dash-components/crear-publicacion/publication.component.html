@@ -1,0 +1,17 @@
+<div class="form-container">
+  <h2>Nuevo Post</h2>
+  <form (ngSubmit)="addPublication()">
+    <div class="form-group">
+      <label for="titulo">Título</label>
+      <input type="text" id="titulo" name="titulo" placeholder="Escribe el título..." [(ngModel)]='request.title'>
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" name="descripcion" placeholder="Escribe la descripción..."
+        [(ngModel)]='request.content'></textarea>
+    </div>
+
+    <button type="submit" class="btn-submit">Crear</button>
+  </form>
+</div>

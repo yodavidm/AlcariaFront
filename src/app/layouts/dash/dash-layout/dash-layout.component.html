@@ -1,1 +1,14 @@
-<p>dash-layout works!</p>
+<div class="dash-layout">
+    <app-dash-sidebar></app-dash-sidebar>
+    <div class="user-icon">
+        <span class="user-name">Admin</span>
+        <img src="../../../../assets/images/usericon.png" alt="icon">
+
+    </div>
+    <div class="dash-content-wrapper">
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+        <app-dash-footer></app-dash-footer>
+    </div>
+</div>

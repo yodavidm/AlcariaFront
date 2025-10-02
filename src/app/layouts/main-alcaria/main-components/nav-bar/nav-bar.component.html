@@ -19,7 +19,6 @@
 
     <a *ngIf="!isLoggedIn" routerLink="login" (click)="closeMenu()">Iniciar sesión</a>
     <a *ngIf="isLoggedIn" (click)="logout(); closeMenu()" style="cursor:pointer;">Cerrar sesión</a>
-    <a *ngIf="isLoggedIn" routerLink="/uploadCSV" (click)="closeMenu()" style="cursor:pointer;">Subir CSV</a>
   </nav>
 
 </header>
