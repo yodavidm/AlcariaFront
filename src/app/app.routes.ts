@@ -4,7 +4,7 @@ import { EquipoDirectivoComponent } from './layouts/main-alcaria/main-components
 import { LoginComponent } from './layouts/main-alcaria/main-components/login/login.component';
 import { LoginActivateComponent } from './layouts/main-alcaria/main-components/login-activate/login-activate.component';
 import { LoginNormalComponent } from './layouts/main-alcaria/main-components/login-normal/login-normal.component';
-import { UploadCsvComponent } from './layouts/main-alcaria/main-components/upload-csv/upload-csv.component';
+import { UploadCsvComponent } from './layouts/dash/dash-components/upload-csv/upload-csv.component';
 import { MainLayoutComponent } from './layouts/main-alcaria/main-layout/main-layout.component';
 import { DashLayoutComponent } from './layouts/dash/dash-layout/dash-layout.component';
 import { PublicationComponent } from './layouts/dash/dash-components/crear-publicacion/publication.component';

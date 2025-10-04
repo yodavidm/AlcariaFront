@@ -33,7 +33,7 @@ export class UploadCsvComponent {
         next: (res) => {
           this.result = res;
           this.toastr.success('Usuarios importados correctamente')
-
+          this.selectedFile = null;
         },
         error: (err) => {console.error('Error al subir el archivo', err),
           this.toastr.error('Error al subir el archivo')

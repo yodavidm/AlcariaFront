@@ -8,7 +8,7 @@
                 laudantium nobis.</p>
             <a routerLink="/equipo" class="btn">Equipo Directivo</a>
             <a class="btn" (click)="verToken()">Plan de Centro</a>
-            
+
 
         </div>
     </header>
@@ -16,14 +16,12 @@
 
     <!-- Sección de artículos -->
     <section class="articles">
-        <article>
+        <article *ngFor="let publicacion of publicaciones">
             <div class="articleImageHolder">
                 <img src="../../../../../assets/images/demo.PNG" alt="Blog image">
             </div>
-            <h2 class="news-title">INFORMACIÓN DE INICIO DE CURSO 25/26</h2>
-            <p class="description">Aquí tienes toda la información para el inicio del curso 25/25 en el CPIFP Los
-                Viveros:
-                horario de las presentaciones, turnos y toda la información útil.</p>
+            <h2 class="news-title">{{publicacion.title}}</h2>
+            <p class="description">{{publicacion.content}}</p>
             <div class="options">
                 <span>
                     Leer más
@@ -31,6 +29,7 @@
             </div>
         </article>
     </section>
+
 
 
 

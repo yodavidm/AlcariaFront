@@ -20,16 +20,19 @@ export class VerPublicacionesComponent {
     this.getPublications();
   }
   
-  getPublications(){
-    this.service.getPublications().subscribe({
-      next: (data:PubliResponse[])=>{
-        this.publicaciones = data;
-      },
-      error: er =>{
-        console.log('No pudieron cargarse');
-        
-      }
-    })
-  }
+getPublications() {
+  this.service.getPublications().subscribe({
+    next: (data: PubliResponse[]) => {
+      // Ordenar de más nuevo a más viejo
+      this.publicaciones = data.sort((a, b) => {
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+      });
+    },
+    error: er => {
+      console.log('No pudieron cargarse');
+    }
+  });
+}
+
 
 }

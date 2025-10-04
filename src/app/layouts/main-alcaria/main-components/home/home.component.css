@@ -124,9 +124,14 @@
 }
 
 .description {
-    color: #22215B;
-    font-size: 0.9rem;
+  color: #22215B;
+  font-size: 0.9rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* máximo 4 líneas visibles */
+  -webkit-box-orient: vertical;
 }
+
 
 
 .options {

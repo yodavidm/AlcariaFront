@@ -1,7 +1,13 @@
-<div class="card" *ngFor="let publicacion of publicaciones">
-  <h3>{{publicacion.title}}</h3>
-  <p>
-    {{publicacion.content}}
-  </p>
-  <h3>Leer mas</h3>
-</div>
+    <section class="articles">
+        <article *ngFor="let publicacion of publicaciones">
+            <div class="articleImageHolder">
+                <img src="../../../../../assets/images/demo.PNG" alt="Blog image">
+            </div>
+            <h2 class="news-title">{{publicacion.title}}</h2>
+            <div class="options">
+                <span>
+                    Leer más
+                </span>
+            </div>
+        </article>
+    </section>

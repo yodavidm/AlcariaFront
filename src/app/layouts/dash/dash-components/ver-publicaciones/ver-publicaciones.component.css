@@ -1,26 +1,70 @@
-.card {
-        margin-top: 6em;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 20px;
-      max-width: 350px;
-      width: 100%;
-      transition: transform 0.2s ease;
-    }
+.articles {
+  display: flex;
+  justify-content: flex-start;
+  /* quita el espacio extra entre artículos */
+  flex-wrap: wrap;
+  padding: 80px;
+  gap: 25px;
+  margin-left: 2.6rem;
+  /* permite que los items pasen a la siguiente línea */
+  
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+.articles article {
+  width: 12rem;
+  height: 12rem;
+  background-color: #ffffff;
+  padding: 1rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-top: 6px solid #22215bb4;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top-left-radius: 20px;
+}
 
-    .card h3 {
-      margin: 0 0 10px;
-      color: #333;
-      font-size: 20px;
-    }
+.articles article:hover {
+  /* aumenta sombra y levanta la card */
+  transform: translateY(-10px);
+  /* sube un poco */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
 
-    .card p {
-      color: #555;
-      font-size: 14px;
-      line-height: 1.5;
-    }
+.articleImageHolder {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.articleImageHolder img {
+  width: 50%;
+  height: auto;
+  max-height: 15rem;
+  object-fit: cover;
+  border-radius: 1.5rem;
+}
+
+.news-title {
+  color: #22215B;
+  padding: 1rem 0;
+  font-size: small;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size:x-small;
+}
+
+.options span {
+    font-weight: 600;
+    color: #22215B;
+    cursor: pointer;
+    padding: 1rem 0;
+}
+
+.options span:hover {
+    /* aumenta sombra y levanta la card */
+    color: #6993c6;
+}

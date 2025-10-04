@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="upload-container">
+        <h2>📂 Subir CSV de usuarios</h2>
+
+        <div class="upload-box">
+            <label for="fileInput" class="file-label">
+                Selecciona tu archivo
+            </label>
+            <input type="file" id="fileInput" (change)="onFileSelected($event)" accept=".csv" hidden />
+            <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
+        </div>
+
+        <button (click)="onUpload()" [disabled]="!selectedFile">
+            Subir
+        </button>
+    </div>
+</div>

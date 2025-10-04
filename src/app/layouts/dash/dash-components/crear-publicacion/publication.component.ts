@@ -27,6 +27,8 @@ export class PublicationComponent {
     this.publiService.addPublication(this.request).subscribe({
       next: data => {
         alert("Publicacion " + data.id + " y titulo " + data.title);
+        this.request.title = '';
+        this.request.content = '';
       },
       error: er => {
         alert("cagaste amigo!! " + er)

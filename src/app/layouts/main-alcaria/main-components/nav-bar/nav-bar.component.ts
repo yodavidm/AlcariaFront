@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { LoginService } from '../../../../services/main-services/login.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-nav-bar',
@@ -30,10 +31,40 @@ export class NavBarComponent {
   }
 
   // Revisar si hay token en localStorage
-  checkLogin() {
-    const token = localStorage.getItem('access_token');
-    this.isLoggedIn = !!token;  // true si hay token, false si no
+checkLogin() {
+  const token = localStorage.getItem('access_token');
+
+  if (!token) {
+    
+    this.isLoggedIn = false;
+    console.log('suck my dick no hay token');
+    
+    return;
   }
+
+  try {
+    // decodifica el token
+    const decoded: any = jwtDecode(token);
+
+    // exp viene en segundos → Date.now() en milisegundos
+    const isExpired = decoded.exp * 1000 < Date.now();
+
+    console.log(decoded.exp + ' y expired ' + isExpired);
+
+    if (isExpired) {
+      localStorage.removeItem('access_token'); // opcional: limpiar
+      this.isLoggedIn = false;
+    } else {
+      this.isLoggedIn = true;
+    }
+
+  } catch (err) {
+    // si el token está corrupto o no es válido
+    localStorage.removeItem('access_token');
+    this.isLoggedIn = false;
+  }
+}
+
 
   logout() {
     localStorage.removeItem('access_token');

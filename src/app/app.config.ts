@@ -7,6 +7,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
+
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
   provideRouter(routes),
@@ -16,6 +17,6 @@ export const appConfig: ApplicationConfig = {
     timeOut: 3000,
     preventDuplicates: true,
   }),
-  provideAnimations()
+  provideAnimations(),
   ]
 };
