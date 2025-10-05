@@ -1,4 +1,4 @@
-<section class="articles" *ngIf="!isEmpty">
+<section class="articles" *ngIf="!loading && !isEmpty">
     <article *ngFor="let publicacion of publicaciones">
         <div class="articleImageHolder">
             <img src="../../../../../assets/images/demo.PNG" alt="Blog image">
@@ -12,6 +12,10 @@
     </article>
 </section>
 
-<div class="vacio" *ngIf="isEmpty">
+<div class="vacio" *ngIf="!loading && isEmpty">
     <img src="assets/images/emptyNews.png" alt="vacio">
+</div>
+
+<div class="spin-container">
+    <div class="spinner" *ngIf="loading"></div>
 </div>

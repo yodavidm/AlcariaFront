@@ -9,7 +9,7 @@ import { MainLayoutComponent } from './layouts/main-alcaria/main-layout/main-lay
 import { DashLayoutComponent } from './layouts/dash/dash-layout/dash-layout.component';
 import { PublicationComponent } from './layouts/dash/dash-components/crear-publicacion/publication.component';
 import { VerPublicacionesComponent } from './layouts/dash/dash-components/ver-publicaciones/ver-publicaciones.component';
-import { UsersComponent } from './layouts/dash/dash-components/users/users.component';
+import { UsersComponent } from './layouts/dash/dash-components/ver-users/users.component';
 
 export const routes: Routes = [
     {

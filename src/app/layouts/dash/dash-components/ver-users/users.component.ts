@@ -12,29 +12,29 @@ import { CommonModule } from '@angular/common';
 })
 export class UsersComponent {
 
-  constructor(private service: UserService) { }
+   users: UserResponse[] = [];
+  isEmpty = false;
+  loading = true;
 
-  users: UserResponse[] = [];
-
-  isEmpty: boolean = true;
+  constructor(private service: UserService) {}
 
   ngOnInit() {
     this.getUsers();
   }
 
   getUsers() {
+    this.loading = true;
     this.service.getUsers().subscribe({
-      next: (data: UserResponse[]) => {
+      next: (data) => {
         this.users = data;
         this.isEmpty = !this.users || this.users.length === 0;
-
-
+        this.loading = false;
       },
-      error: er => {
-        console.log("no se pudieron cargar", er);
+      error: (err) => {
+        console.error("no se pudieron cargar", err);
         this.isEmpty = true;
-
+        this.loading = false;
       }
-    })
+    });
   }
 }

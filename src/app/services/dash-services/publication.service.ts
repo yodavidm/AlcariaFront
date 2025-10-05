@@ -21,12 +21,19 @@ export class PublicationService {
 
     return this.http.post<PubliResponse>(this.baseUrl + '/add', request, { headers });
   }
-  
+
   getPublications(): Observable<PubliResponse[]> {
     const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<any>(this.baseUrl, { headers }).pipe(
       map(response => response._embedded.publicationResponseModelList)
     );
+  }
+
+  getPublicationById(id: string): Observable<PubliResponse> {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    
+    return this.http.get<PubliResponse>(this.baseUrl + '/' + id, { headers });
   }
 }

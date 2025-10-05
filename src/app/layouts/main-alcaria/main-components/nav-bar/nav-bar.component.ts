@@ -37,7 +37,7 @@ checkLogin() {
   if (!token) {
     
     this.isLoggedIn = false;
-    console.log('suck my dick no hay token');
+    console.log('No hay token en localStorage');
     
     return;
   }
@@ -49,7 +49,7 @@ checkLogin() {
     // exp viene en segundos → Date.now() en milisegundos
     const isExpired = decoded.exp * 1000 < Date.now();
 
-    console.log(decoded.exp + ' y expired ' + isExpired);
+    console.log("Estado de expiración de token: " + isExpired);
 
     if (isExpired) {
       localStorage.removeItem('access_token'); // opcional: limpiar

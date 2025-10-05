@@ -17,6 +17,8 @@ export class VerPublicacionesComponent {
   publicaciones: PubliResponse[] = [];
 
   isEmpty: boolean = true;
+  loading: boolean = true;
+
 
   ngOnInit(): void {
     this.getPublications();
@@ -30,10 +32,14 @@ export class VerPublicacionesComponent {
           return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
         });
         this.isEmpty = !this.publicaciones || this.publicaciones.length === 0;
+        this.loading = false;
+
       },
       error: er => {
         console.log('No pudieron cargarse');
         this.isEmpty = true;
+        this.loading = false;
+
       }
     });
   }

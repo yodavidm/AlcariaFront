@@ -1,4 +1,4 @@
-<div class="container" *ngIf="!isEmpty">
+<div class="container" *ngIf="!loading && !isEmpty">
   <table>
     <thead>
       <tr>
@@ -27,6 +27,10 @@
   </table>
 </div>
 
-<div class="vacio" *ngIf="isEmpty">
+<div class="container" *ngIf="!loading && isEmpty">
   <img src="assets/images/emptyNews.png" alt="vacio">
+</div>
+
+<div class="spin-container">
+  <div class="spinner" *ngIf="loading"></div>
 </div>
