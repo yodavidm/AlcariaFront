@@ -7,7 +7,7 @@
   gap: 25px;
   margin-left: 2.6rem;
   /* permite que los items pasen a la siguiente línea */
-  
+
 }
 
 .articles article {
@@ -51,20 +51,40 @@
 }
 
 .options {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size:x-small;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: x-small;
 }
 
 .options span {
-    font-weight: 600;
-    color: #22215B;
-    cursor: pointer;
-    padding: 1rem 0;
+  font-weight: 600;
+  color: #22215B;
+  cursor: pointer;
+  padding: 1rem 0;
 }
 
 .options span:hover {
-    /* aumenta sombra y levanta la card */
-    color: #6993c6;
+  /* aumenta sombra y levanta la card */
+  color: #6993c6;
+}
+
+
+.vacio {
+  display: flex;
+  justify-content: center;
+  /* Centra horizontalmente */
+  align-items: center;
+  /* Centra verticalmente */
+  height: 90vh;
+  /* Ocupa toda la altura visible de la ventana */
+}
+
+.vacio img {
+  max-width: 300px;
+  /* Tamaño máximo de la imagen */
+  width: 80%;
+  /* Escala en pantallas pequeñas */
+  opacity: 0.6;
+  /* (Opcional) toque visual */
 }

@@ -12,27 +12,31 @@ import { CommonModule } from '@angular/common';
 })
 export class VerPublicacionesComponent {
 
-  constructor(private service:PublicationService){}
+  constructor(private service: PublicationService) { }
 
-  publicaciones:PubliResponse[] = [];
+  publicaciones: PubliResponse[] = [];
 
-   ngOnInit(): void {
+  isEmpty: boolean = true;
+
+  ngOnInit(): void {
     this.getPublications();
   }
-  
-getPublications() {
-  this.service.getPublications().subscribe({
-    next: (data: PubliResponse[]) => {
-      // Ordenar de más nuevo a más viejo
-      this.publicaciones = data.sort((a, b) => {
-        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-      });
-    },
-    error: er => {
-      console.log('No pudieron cargarse');
-    }
-  });
-}
+
+  getPublications() {
+    this.service.getPublications().subscribe({
+      next: (data: PubliResponse[]) => {
+        // Ordenar de más nuevo a más viejo
+        this.publicaciones = data.sort((a, b) => {
+          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+        });
+        this.isEmpty = !this.publicaciones || this.publicaciones.length === 0;
+      },
+      error: er => {
+        console.log('No pudieron cargarse');
+        this.isEmpty = true;
+      }
+    });
+  }
 
 
 }

@@ -1,12 +1,8 @@
 .container {
-    height: 100vh;
-    /* toda la ventana */
-    margin: 0;
     display: flex;
-    justify-content: center;
-    /* centra horizontal */
-    align-items: center;
-    /* centra vertical */
+    justify-content: center;  /* centra horizontal */
+    align-items: center;      /* centra vertical */
+    min-height: 90vh;        /* ocupa toda la altura de la ventana */
 }
 
 .upload-container {
@@ -36,6 +32,7 @@
     border-radius: 6px;
     cursor: pointer;
 }
+
 
 .upload-box span {
     display: block;

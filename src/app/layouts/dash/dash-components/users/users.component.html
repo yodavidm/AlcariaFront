@@ -1,0 +1,32 @@
+<div class="container" *ngIf="!isEmpty">
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre Completo</th>
+        <th>Email</th>
+        <th>Departamento</th>
+        <th>IdeaUser</th>
+        <th>Coordinador</th>
+        <th>Activo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.completeName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.department}}</td>
+        <td>{{user.ideaUser}}</td>
+        <td [ngClass]="user.coordinator ? 'active' : 'inactive'">
+          {{ user.coordinator ? 'Sí' : 'No' }}
+        </td>
+        <td [ngClass]="user.isAccountActive ? 'active' : 'inactive'">
+          {{ user.isAccountActive ? 'Sí' : 'No' }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="vacio" *ngIf="isEmpty">
+  <img src="assets/images/emptyNews.png" alt="vacio">
+</div>

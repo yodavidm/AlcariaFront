@@ -67,6 +67,7 @@
         margin: 1em auto 0 auto;
     }
 }
+
 /* --- FIN SECCION BANNER ALCARIA --- */
 
 /* --- SECCION DE  NOTICIAS ALCARIA (CARDS) --- */
@@ -124,12 +125,14 @@
 }
 
 .description {
-  color: #22215B;
-  font-size: 0.9rem;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 4; /* máximo 4 líneas visibles */
-  -webkit-box-orient: vertical;
+    color: #22215B;
+    font-size: 0.9rem;
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+    /* máximo 4 líneas visibles */
+    -webkit-box-orient: vertical;
 }
 
 
@@ -221,6 +224,7 @@
     background-repeat: no-repeat;
     text-align: center;
 }
+
 /* --- FIN BANNER EDUCACION --- */
 
 /* --- Responsive --- */

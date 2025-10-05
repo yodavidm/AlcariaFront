@@ -1,13 +1,17 @@
-    <section class="articles">
-        <article *ngFor="let publicacion of publicaciones">
-            <div class="articleImageHolder">
-                <img src="../../../../../assets/images/demo.PNG" alt="Blog image">
-            </div>
-            <h2 class="news-title">{{publicacion.title}}</h2>
-            <div class="options">
-                <span>
-                    Leer más
-                </span>
-            </div>
-        </article>
-    </section>
+<section class="articles" *ngIf="!isEmpty">
+    <article *ngFor="let publicacion of publicaciones">
+        <div class="articleImageHolder">
+            <img src="../../../../../assets/images/demo.PNG" alt="Blog image">
+        </div>
+        <h2 class="news-title">{{publicacion.title}}</h2>
+        <div class="options">
+            <span>
+                Leer más
+            </span>
+        </div>
+    </article>
+</section>
+
+<div class="vacio" *ngIf="isEmpty">
+    <img src="assets/images/emptyNews.png" alt="vacio">
+</div>
