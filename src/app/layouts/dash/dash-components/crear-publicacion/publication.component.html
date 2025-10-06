@@ -1,5 +1,6 @@
 <div class="form-container">
-  <h2><a>🖼️</a> Añadir portada</h2>
+  <input type="file" (change)="onCoverSelected($event)">
+  <h2>Añadir portada</h2>
   <form (ngSubmit)="addPublication()">
     <div class="form-group">
       <input type="text" id="titulo" name="titulo" placeholder="Escribe un título atractivo..."
@@ -13,7 +14,7 @@
 
     <div class="buttons">
       <button type="submit" class="btn-submit">Publicar</button>
-      <button type="button" class="btn-foto">Añadir imágenes</button>
+      <input type="file" multiple (change)="onBodyImagesSelected($event)">
     </div>
 
   </form>

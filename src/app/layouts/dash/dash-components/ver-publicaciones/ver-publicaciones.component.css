@@ -34,14 +34,15 @@
   width: 100%;
   height: auto;
   position: relative;
+  text-align: center;
 }
 
 .articleImageHolder img {
-  width: 50%;
+  width:100%;
   height: auto;
-  max-height: 15rem;
+  max-height: 3rem;
   object-fit: cover;
-  border-radius: 1.5rem;
+  border-top-left-radius: 20px;
 }
 
 .news-title {

@@ -3,4 +3,6 @@ export interface PubliResponse {
     createdAt:string;
     title:string;
     content:string;
+    coverImageUrl:string;
+    bodyImagesUrl:string[];
 }

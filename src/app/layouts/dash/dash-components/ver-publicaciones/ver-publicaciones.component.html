@@ -1,7 +1,7 @@
 <section class="articles" *ngIf="!loading && !isEmpty">
     <article *ngFor="let publicacion of publicaciones">
         <div class="articleImageHolder">
-            <img src="../../../../../assets/images/demo.PNG" alt="Blog image">
+            <img [src]="'http://localhost:8080' + publicacion.coverImageUrl" alt="cover">
         </div>
         <h2 class="news-title">{{publicacion.title}}</h2>
         <div class="options">
