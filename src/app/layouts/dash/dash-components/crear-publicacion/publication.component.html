@@ -1,16 +1,20 @@
 <div class="form-container">
-  <h2>✍️ Crear noticia</h2>
+  <h2><a>🖼️</a> Añadir portada</h2>
   <form (ngSubmit)="addPublication()">
     <div class="form-group">
       <input type="text" id="titulo" name="titulo" placeholder="Escribe un título atractivo..."
-             [(ngModel)]='request.title'>
+        [(ngModel)]='request.title'>
     </div>
 
     <div class="form-group">
       <textarea id="descripcion" name="descripcion" placeholder="Escribe tu contenido aquí..."
-                [(ngModel)]='request.content'></textarea>
+        [(ngModel)]='request.content'></textarea>
     </div>
 
-    <button type="submit" class="btn-submit">Publicar</button>
+    <div class="buttons">
+      <button type="submit" class="btn-submit">Publicar</button>
+      <button type="button" class="btn-foto">Añadir imágenes</button>
+    </div>
+
   </form>
 </div>

@@ -70,3 +70,19 @@
     display: flex;
   }
 }
+
+.dashboard {
+  background-color: #22215B;
+  /* color base */
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition-duration: 0.4s;
+
+}
+
+
+.dashboard:hover {
+  background-color: #6993c6;
+}
