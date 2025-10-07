@@ -1,51 +1,76 @@
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 20px;
-        }
+.publication-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10em 10em 10em 10em;
+    background-image: url('../../../../../assets/images/headerBanner.png');
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 
-        .post {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            padding: 20px;
-        }
+}
 
-        .cover-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #22215B;
+}
 
-        h1.title {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.cover-container {
+    margin-top: 3em;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
 
-        .content {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
+.cover-image {
+    max-width: 50%;
+    border-radius: 8px;
+}
 
-        .body-images {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
+.description {
+    margin-top: 3em;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: left;
+}
 
-        .body-images img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
+.description p {
+    word-break: break-word;
+    /* fuerza a partir palabras largas */
+    overflow-wrap: break-word;
+    hyphens: auto;
+    white-space: pre-wrap;
+}
+
+.body-images {
+    margin-top: 3em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.images {
+    width: 300px;
+}
+
+.list-image {
+    /* 3 por fila con gap */
+    width: 300px;
+    height: 300px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+@media (max-width: 600px) {
+    .body-image {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}

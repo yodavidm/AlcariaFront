@@ -10,6 +10,7 @@ import { DashLayoutComponent } from './layouts/dash/dash-layout/dash-layout.comp
 import { PublicationComponent } from './layouts/dash/dash-components/crear-publicacion/publication.component';
 import { VerPublicacionesComponent } from './layouts/dash/dash-components/ver-publicaciones/ver-publicaciones.component';
 import { UsersComponent } from './layouts/dash/dash-components/ver-users/users.component';
+import { VerPublicacionComponent } from './layouts/main-alcaria/main-components/ver-publicacion/ver-publicacion.component';
 
 export const routes: Routes = [
     {
@@ -21,7 +22,10 @@ export const routes: Routes = [
             { path: 'login', component: LoginComponent },
             { path: 'home', component: HomeComponent },
             { path: 'activar-cuenta', component: LoginActivateComponent },
-            { path: 'login-normal', component: LoginNormalComponent }]
+            { path: 'login-normal', component: LoginNormalComponent },
+            { path: 'publicacion/:id', component: VerPublicacionComponent }
+
+        ]
     },
 
     {
@@ -32,7 +36,8 @@ export const routes: Routes = [
             { path: 'crear-publicacion', component: PublicationComponent },
             { path: 'publicaciones', component: VerPublicacionesComponent },
             { path: 'uploadCSV', component: UploadCsvComponent },
-            { path: 'users', component: UsersComponent }
+            { path: 'users', component: UsersComponent },
+
 
         ]
     }

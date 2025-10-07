@@ -2,19 +2,28 @@ import { Component } from '@angular/core';
 import { PublicationService } from '../../../../services/dash-services/publication.service';
 import { PubliResponse } from '../../../../interfaces/dash-faces/publi-response';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-ver-publicaciones',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './ver-publicaciones.component.html',
   styleUrl: './ver-publicaciones.component.css'
 })
 export class VerPublicacionesComponent {
 
-  constructor(private service: PublicationService) { }
+  constructor(private service: PublicationService, private router: Router, private route: ActivatedRoute) { }
 
   publicaciones: PubliResponse[] = [];
+  publicacion: PubliResponse = {
+    id: '',
+    createdAt: '',
+    title: '',
+    content: '',
+    coverImageUrl: '',
+    bodyImagesUrl: []
+  }
 
   isEmpty: boolean = true;
   loading: boolean = true;
@@ -43,6 +52,14 @@ export class VerPublicacionesComponent {
       }
     });
   }
+
+  goToPublication(id: string) {
+    if (!id) return;
+    this.router.navigate(['/publicacion', id]).then(() => {
+      window.scrollTo(0, 0);
+    });
+  }
+
 
 
 }

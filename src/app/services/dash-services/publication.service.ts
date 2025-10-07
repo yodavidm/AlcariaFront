@@ -30,18 +30,14 @@ export class PublicationService {
   }
 
   getPublicationById(id: string): Observable<PubliResponse> {
-    const token = localStorage.getItem('access_token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    return this.http.get<PubliResponse>(this.baseUrl + '/' + id, { headers });
+    return this.http.get<PubliResponse>(this.baseUrl + '/' + id);
   }
 
-
-  //test
   addPublication(formData: FormData): Observable<PubliResponse> {
     const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     return this.http.post<PubliResponse>(this.baseUrl + '/add', formData, { headers });
   }
+
 }

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PublicationService } from '../../../../services/dash-services/publication.service';
 import { PubliResponse } from '../../../../interfaces/dash-faces/publi-response';
@@ -15,7 +15,7 @@ import { PubliResponse } from '../../../../interfaces/dash-faces/publi-response'
 })
 export class HomeComponent {
 
-  constructor(private toastr: ToastrService, private service: PublicationService) { }
+  constructor(private toastr: ToastrService, private service: PublicationService, private router: Router) { }
 
   ngOnInit() {
     if (localStorage.getItem('login_success') === 'true') {
@@ -39,19 +39,28 @@ export class HomeComponent {
   publicaciones: PubliResponse[] = [];
 
 
-getPublications() {
-  this.service.getPublications().subscribe({
-    next: (data: PubliResponse[]) => {
-      // Ordenar de más nuevo a más viejo
-      this.publicaciones = data.sort((a, b) => {
-        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-      });
-    },
-    error: er => {
-      console.log('No pudieron cargarse');
-    }
-  });
-}
+  getPublications() {
+    this.service.getPublications().subscribe({
+      next: (data: PubliResponse[]) => {
+        // Ordenar de más nuevo a más viejo
+        this.publicaciones = data.sort((a, b) => {
+          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+        });
+      },
+      error: er => {
+        console.log('No pudieron cargarse');
+      }
+    });
+  }
+
+  goToPublication(id: string) {
+    if (!id) return;
+    this.router.navigate(['/publicacion', id]).then(() => {
+      window.scrollTo(0, 0);
+    });
+  }
+
+
 
 
 }

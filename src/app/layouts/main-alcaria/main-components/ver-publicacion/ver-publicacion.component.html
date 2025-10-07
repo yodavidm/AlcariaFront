@@ -1,21 +1,18 @@
-<div class="post">
-    <!-- Cover Image -->
-    <img class="cover-image" src="http://localhost:8080/uploads/cover-image.png" alt="Cover Image">
+<div class="publication-container">
+    <h1 class="title">{{publication.title}}</h1>
 
-    <!-- Title -->
-    <h1 class="title">Título de la Publicación</h1>
-
-    <!-- Content -->
-    <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra, justo ac malesuada dapibus, 
-        massa lorem tempor velit, at convallis libero lacus eget sapien. Suspendisse potenti.
+    <div class="cover-container">
+        <img [src]="'http://localhost:8080' + publication.coverImageUrl" alt="cover" class="cover-image">
     </div>
 
-    <!-- Body Images -->
+    <div class="description">
+        <p>
+           {{publication.content}}
+        </p>
+    </div>
     <div class="body-images">
-        <img src="http://localhost:8080/uploads/body1.png" alt="Imagen 1">
-        <img src="http://localhost:8080/uploads/body2.png" alt="Imagen 2">
-        <img src="http://localhost:8080/uploads/body3.png" alt="Imagen 3">
+        <div class="images" *ngFor="let imagen of publication.bodyImagesUrl">
+        <img [src]="'http://localhost:8080' + imagen" alt="cover" class="list-image">
+        </div>
     </div>
 </div>
-

@@ -11,8 +11,12 @@
   background-color: white;
 }
 
+.logo{
+  width: 30%;
+}
+
 .navbar .logo a img {
-  width: 25%;
+  width: 30%;
 }
 
 .navbar .nav-links a {

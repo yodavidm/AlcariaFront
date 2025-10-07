@@ -8,23 +8,23 @@
                 laudantium nobis.</p>
             <a routerLink="/equipo" class="btn">Equipo Directivo</a>
             <a class="btn" (click)="verToken()">Plan de Centro</a>
-
-
         </div>
     </header>
 
-
+    <div class="titulo-news">
+        <h1>Noticias y actualidad</h1>
+    </div>
     <!-- Sección de artículos -->
     <section class="articles">
         <article *ngFor="let publicacion of publicaciones">
             <div class="articleImageHolder">
-                <img src="../../../../../assets/images/demo.PNG" alt="Blog image">
+                <img [src]="'http://localhost:8080' + publicacion.coverImageUrl" alt="cover">
             </div>
             <h2 class="news-title">{{publicacion.title}}</h2>
             <p class="description">{{publicacion.content}}</p>
             <div class="options">
                 <span>
-                    Leer más
+                    <a (click)="goToPublication(publicacion.id)">Leer más</a>
                 </span>
             </div>
         </article>

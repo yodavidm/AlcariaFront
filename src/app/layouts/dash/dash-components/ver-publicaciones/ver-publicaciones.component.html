@@ -5,9 +5,7 @@
         </div>
         <h2 class="news-title">{{publicacion.title}}</h2>
         <div class="options">
-            <span>
-                Leer más
-            </span>
+            <a  (click)="goToPublication(publicacion.id)">Leer más</a>
         </div>
     </article>
 </section>

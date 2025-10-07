@@ -38,7 +38,7 @@
 }
 
 .articleImageHolder img {
-  width:100%;
+  width: 100%;
   height: auto;
   max-height: 3rem;
   object-fit: cover;
@@ -54,7 +54,13 @@
   line-clamp: 1;
   /* número máximo de líneas */
   -webkit-box-orient: vertical;
-  overflow: hidden;   /* <--- NECESARIO para cortar el texto */
+  overflow: hidden;
+  /* <--- NECESARIO para cortar el texto */
+  word-break: break-word;
+  /* fuerza a partir palabras largas */
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: pre-wrap;
 }
 
 .options {
@@ -64,11 +70,12 @@
   font-size: smaller;
 }
 
-.options span {
+.options a {
   font-weight: 600;
   color: #22215B;
   cursor: pointer;
   padding: 1rem 0;
+  text-decoration: none;
 }
 
 .options span:hover {
