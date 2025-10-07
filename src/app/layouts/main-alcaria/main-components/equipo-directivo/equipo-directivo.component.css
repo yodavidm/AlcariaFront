@@ -7,13 +7,10 @@
 }
 
 .org-wrap {
-    padding-top: 7em;
+    padding: 7em 7em 7em 7em;
     width: 100%;
-    padding-bottom: 7em;
-    max-width: 980px;
     margin: auto;
     color: #22215B;
-    background-color: white;
 }
 
 /* Tarjeta del director */

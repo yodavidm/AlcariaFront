@@ -5,11 +5,11 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-ver-publicaciones',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './ver-publicaciones.component.html',
-  styleUrl: './ver-publicaciones.component.css'
+    selector: 'app-ver-publicaciones',
+    imports: [CommonModule, RouterModule],
+    standalone: true,
+    templateUrl: './ver-publicaciones.component.html',
+    styleUrl: './ver-publicaciones.component.css'
 })
 export class VerPublicacionesComponent {
 

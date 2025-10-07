@@ -4,11 +4,11 @@ import { UserResponse } from '../../../../interfaces/dash-faces/user-response';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-users',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './users.component.html',
-  styleUrl: './users.component.css'
+    selector: 'app-users',
+    imports: [CommonModule],
+    standalone: true,
+    templateUrl: './users.component.html',
+    styleUrl: './users.component.css'
 })
 export class UsersComponent {
 

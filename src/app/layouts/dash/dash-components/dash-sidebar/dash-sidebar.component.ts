@@ -4,21 +4,22 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dash-sidebar',
+  imports: [CommonModule, RouterLink],
   standalone: true,
-  imports: [CommonModule,RouterLink],
+
   templateUrl: './dash-sidebar.component.html',
   styleUrl: './dash-sidebar.component.css'
 })
 export class DashSidebarComponent implements AfterViewInit {
 
-    @ViewChildren('arrow') arrows!: QueryList<ElementRef>;
+  @ViewChildren('arrow') arrows!: QueryList<ElementRef>;
   @ViewChildren('sidebarBtn') sidebarBtn!: QueryList<ElementRef>;
   @ViewChildren('sidebar') sidebar!: QueryList<ElementRef>;
 
   private sidebarEl!: HTMLElement | null;
   private btnEl!: HTMLElement | null;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2) { }
 
   ngAfterViewInit(): void {
     // Manejar clicks en las flechas

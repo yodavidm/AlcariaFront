@@ -7,11 +7,10 @@ import { ErrorResponse } from '../../../../interfaces/main-faces/error-response'
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-login-normal',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './login-normal.component.html',
-  styleUrl: './login-normal.component.css'
+    selector: 'app-login-normal',
+    imports: [FormsModule],
+    templateUrl: './login-normal.component.html',
+    styleUrl: './login-normal.component.css'
 })
 export class LoginNormalComponent {
 

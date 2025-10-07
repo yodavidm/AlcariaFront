@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { PublicationService } from '../../../../services/dash-services/publication.service';
 import { PubliResponse } from '../../../../interfaces/dash-faces/publi-response';
-import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-ver-publicacion',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './ver-publicacion.component.html',
-  styleUrl: './ver-publicacion.component.css'
+    selector: 'app-ver-publicacion',
+    imports: [CommonModule],
+    standalone: true,
+    templateUrl: './ver-publicacion.component.html',
+    styleUrl: './ver-publicacion.component.css'
 })
 export class VerPublicacionComponent {
 

@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../../../services/main-services/login.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { LoginRequest } from '../../../../interfaces/main-faces/login-request';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ErrorResponse } from '../../../../interfaces/main-faces/error-response';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-login-activate',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
-  templateUrl: './login-activate.component.html',
-  styleUrl: './login-activate.component.css'
+    selector: 'app-login-activate',
+    imports: [FormsModule, CommonModule],
+    standalone: true,
+    templateUrl: './login-activate.component.html',
+    styleUrl: './login-activate.component.css'
 })
 export class LoginActivateComponent {
 

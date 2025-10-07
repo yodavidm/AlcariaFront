@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { PublicationService } from '../../../../services/dash-services/publication.service';
 import { PubliRequest } from '../../../../interfaces/dash-faces/publi-request';
 import { PubliResponse } from '../../../../interfaces/dash-faces/publi-response';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-publication',
-  standalone: true,
   imports: [FormsModule, CommonModule],
+  standalone: true,
   templateUrl: './publication.component.html',
   styleUrl: './publication.component.css'
 })
@@ -34,7 +34,7 @@ export class PublicationComponent {
   onBodyImagesSelected(event: any) {
     this.bodyImages = Array.from(event.target.files);
   }
-  
+
   addPublication() {
     const formData = new FormData();
     formData.append('request', new Blob([JSON.stringify(this.request)], { type: 'application/json' }));

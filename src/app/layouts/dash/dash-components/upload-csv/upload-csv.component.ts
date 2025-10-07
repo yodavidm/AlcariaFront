@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { UploadCsvService } from '../../../../services/main-services/upload-csv.service';
-import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-upload-csv',
-  standalone: true,
   imports: [CommonModule],
+  standalone: true,
   templateUrl: './upload-csv.component.html',
   styleUrl: './upload-csv.component.css'
 })
 export class UploadCsvComponent {
 
-  constructor(private uploadCsvService: UploadCsvService,private toastr:ToastrService) { }
+  constructor(private uploadCsvService: UploadCsvService, private toastr: ToastrService) { }
 
   selectedFile: File | null = null;
   result: any;
@@ -35,7 +35,8 @@ export class UploadCsvComponent {
           this.toastr.success('Usuarios importados correctamente')
           this.selectedFile = null;
         },
-        error: (err) => {console.error('Error al subir el archivo', err),
+        error: (err) => {
+          console.error('Error al subir el archivo', err),
           this.toastr.error('Error al subir el archivo')
         }
       });

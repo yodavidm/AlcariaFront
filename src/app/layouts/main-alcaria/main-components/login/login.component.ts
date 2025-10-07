@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../../../services/main-services/login.service';
-import { Router } from '@angular/router';
 import { LoginRequest } from '../../../../interfaces/main-faces/login-request';
-import { FormsModule } from '@angular/forms';
 import { UserCheckResponse } from '../../../../interfaces/main-faces/user-check-response';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorResponse } from '../../../../interfaces/main-faces/error-response';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+    selector: 'app-login',
+    imports: [FormsModule],
+    standalone: true,
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css'
 })
 export class LoginComponent {
 

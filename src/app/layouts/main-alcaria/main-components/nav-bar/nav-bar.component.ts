@@ -1,15 +1,15 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterModule } from '@angular/router';
 import { LoginService } from '../../../../services/main-services/login.service';
 import { jwtDecode } from 'jwt-decode';
+import { CommonModule } from '@angular/common';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-nav-bar',
-  standalone: true,
-  imports: [RouterLink, RouterModule, CommonModule],
-  templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.css'
+    selector: 'app-nav-bar',
+    imports: [RouterLink, RouterModule, CommonModule],
+    standalone: true,
+    templateUrl: './nav-bar.component.html',
+    styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
   isLoggedIn: boolean = false;
