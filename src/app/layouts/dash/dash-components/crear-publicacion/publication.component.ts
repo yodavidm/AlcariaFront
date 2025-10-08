@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { PublicationService } from '../../../../services/dash-services/publication.service';
 import { PubliRequest } from '../../../../interfaces/dash-faces/publi-request';
 import { PubliResponse } from '../../../../interfaces/dash-faces/publi-response';
@@ -18,13 +18,13 @@ export class PublicationComponent {
 
   constructor(private publiService: PublicationService, private toastr: ToastrService) { }
 
+  // ---------- PUBLICACIÓN ----------
   request: PubliRequest = {
     title: '',
     content: ''
-  }
+  };
 
   publicaciones: PubliResponse[] = [];
-
 
   coverImage!: File;
   bodyImages: File[] = [];
@@ -41,15 +41,9 @@ export class PublicationComponent {
     const formData = new FormData();
     formData.append('request', new Blob([JSON.stringify(this.request)], { type: 'application/json' }));
 
-    // Aquí añades los archivos (asegúrate de tenerlos seleccionados desde un input)
-    if (this.coverImage) {
-      formData.append('coverImage', this.coverImage);
-    }
-
+    if (this.coverImage) formData.append('coverImage', this.coverImage);
     if (this.bodyImages && this.bodyImages.length > 0) {
-      for (let img of this.bodyImages) {
-        formData.append('bodyImages', img);
-      }
+      for (let img of this.bodyImages) formData.append('bodyImages', img);
     }
 
     this.publiService.addPublication(formData).subscribe({
@@ -57,14 +51,13 @@ export class PublicationComponent {
         alert(`Publicación creada: ${data.title}`);
         this.request.title = '';
         this.request.content = '';
+        this.editor.nativeElement.innerHTML = ''; // Limpiamos el editor también
       },
       error: err => {
         const apiErr = err.error as ErrorResponse;
-        // 👇 Aquí llegan las excepciones que lanza el backend
         if (apiErr.status === 400) {
           this.toastr.warning(apiErr.message);
-        }
-        else {
+        } else {
           console.error(apiErr);
           this.toastr.error('Error inesperado en el servidor');
         }
@@ -72,4 +65,37 @@ export class PublicationComponent {
     });
   }
 
+
+  // ---------- EDITOR DE TEXTO ----------
+  @ViewChild('editor') editor!: ElementRef<HTMLDivElement>;
+
+  isBoldActive = false;
+  isUnderlineActive = false;
+
+  ngAfterViewInit() {
+    this.editor.nativeElement.innerHTML = this.request.content;
+  }
+
+  onInput() {
+    this.request.content = this.editor.nativeElement.innerHTML;
+  }
+
+  toggleBold() {
+    document.execCommand('bold'); //cambiar a negrita
+    this.editor.nativeElement.focus();
+    this.updateTextStates();
+    this.onInput();
+  }
+
+  toggleUnderline() {
+    document.execCommand('underline');
+    this.editor.nativeElement.focus();
+    this.updateTextStates();
+    this.onInput();
+  }
+
+  updateTextStates() {
+    this.isBoldActive = document.queryCommandState('bold');
+    this.isUnderlineActive = document.queryCommandState('underline');
+  }
 }

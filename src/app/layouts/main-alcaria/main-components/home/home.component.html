@@ -21,7 +21,7 @@
                 <img [src]="'http://localhost:8080' + publicacion.coverImageUrl" alt="cover">
             </div>
             <h2 class="news-title">{{publicacion.title}}</h2>
-            <p class="description">{{publicacion.content}}</p>
+            <p class="description" [innerHTML]="publicacion.content"></p>
             <div class="options">
                 <span>
                     <a (click)="goToPublication(publicacion.id)">Leer más</a>

@@ -1,3 +1,4 @@
+<!--
 <div class="form-container">
   <input type="file" (change)="onCoverSelected($event)">
   <h2>Añadir portada</h2>
@@ -11,6 +12,45 @@
       <textarea id="descripcion" name="descripcion" placeholder="Escribe tu contenido aquí..."
         [(ngModel)]='request.content'></textarea>
     </div>
+
+    <div class="buttons">
+      <button type="submit" class="btn-submit">Publicar</button>
+      <input type="file" multiple (change)="onBodyImagesSelected($event)">
+    </div>
+
+  </form>
+</div>
+-->
+
+
+
+
+<div class="form-container">
+  <input type="file" (change)="onCoverSelected($event)">
+  <h2>Crear noticia</h2>
+  <form (ngSubmit)="addPublication()">
+    <div class="form-group">
+      <input type="text" id="titulo" name="titulo" placeholder="Escribe un título atractivo..."
+        [(ngModel)]='request.title'>
+    </div>
+
+    <!--EDITOR PARA PONER NEGRITAS,DELINEADO,ENLACE...-->
+    <div class="form-group">
+      
+        <!--TOGGLE BAR-->
+        <div class="toolbar">
+          <button type="button" [class.active]="isBoldActive" (click)="toggleBold()">B</button>
+          <button type="button" [class.active]="isUnderlineActive" (click)="toggleUnderline()">U</button>
+        </div>
+        <div #editor contenteditable="true" class="editor" (input)="onInput()" (keyup)="updateTextStates()"
+          (mouseup)="updateTextStates()">
+        </div>
+        <!--FIN TOGGLE BAR-->
+
+      
+
+    </div>
+    <!--FIN DE EDITOR-->
 
     <div class="buttons">
       <button type="submit" class="btn-submit">Publicar</button>

@@ -121,3 +121,27 @@ textarea:focus {
     min-height: 150px;
   }
 }
+
+
+/*EDITOR DE TEXTO*/
+.toolbar {
+  margin-bottom: 8px;
+}
+
+button {
+  padding: 5px 10px;
+  margin-right: 4px;
+}
+
+button.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.editor {
+  border: 1px solid #ccc;
+  min-height: 100px;
+  padding: 8px;
+  outline: none;
+}
