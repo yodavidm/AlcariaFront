@@ -1,4 +1,4 @@
-<div class="publication-container">
+<div class="publication-container" *ngIf="!loading">
     <h1 class="title">{{publication.title}}</h1>
 
     <div class="cover-container">
@@ -18,4 +18,8 @@
         </div>
     </div>
 
+</div>
+
+<div class="spin-container" *ngIf="loading">
+  <div class="spinner" ></div>
 </div>
