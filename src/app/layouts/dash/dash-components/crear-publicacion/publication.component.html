@@ -26,7 +26,19 @@
 
 
 <div class="form-container">
-  <input type="file" (change)="onCoverSelected($event)">
+
+  <div class="portada">
+    <button type="button" (click)="fileInput.click()" style="margin-bottom: 2em;" class="addCover">
+      <span>🖼️ Añadir portada</span>
+      <input #fileInput type="file" accept="image/*" (change)="onCoverSelected($event)" style="display:none;" />
+    </button>
+
+    <div *ngIf="selectedCoverName" class="coverName">
+      {{ selectedCoverName }}
+    </div>
+  </div>
+
+
   <h2>Crear noticia</h2>
   <form (ngSubmit)="addPublication()">
     <div class="form-group">
@@ -36,18 +48,23 @@
 
     <!--EDITOR PARA PONER NEGRITAS,DELINEADO,ENLACE...-->
     <div class="form-group">
-      
-        <!--TOGGLE BAR-->
-        <div class="toolbar">
-          <button type="button" [class.active]="isBoldActive" (click)="toggleBold()">B</button>
-          <button type="button" [class.active]="isUnderlineActive" (click)="toggleUnderline()">U</button>
-        </div>
-        <div #editor contenteditable="true" class="editor" (input)="onInput()" (keyup)="updateTextStates()"
-          (mouseup)="updateTextStates()">
-        </div>
-        <!--FIN TOGGLE BAR-->
 
-      
+      <!--TOGGLE BAR-->
+      <div class="toolbar">
+        <button type="button" class="text-button" [class.active]="isBoldActive" (click)="toggleBold()">B</button>
+
+        <button type="button" class="text-button" [class.active]="isUnderlineActive" (click)="toggleUnderline()"
+          style="text-decoration: underline;">U</button>
+
+        <button type="button" class="text-button" (click)="addLink()" style="font-size: small;">🔗</button>
+
+      </div>
+      <!--EDITOR PARA CONTENIDO-->
+      <div #editor contenteditable="true" class="editor" (input)="onInput()" (keyup)="updateTextStates()"
+        (mouseup)="updateTextStates()">
+      </div>
+      <!--FIN TOGGLE BAR-->
+
 
     </div>
     <!--FIN DE EDITOR-->

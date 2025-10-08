@@ -27,12 +27,18 @@ export class PublicationComponent {
   publicaciones: PubliResponse[] = [];
 
   coverImage!: File;
+  selectedCoverName: string = '';
+
   bodyImages: File[] = [];
 
   onCoverSelected(event: any) {
     this.coverImage = event.target.files[0];
+    if (this.coverImage) {
+      this.selectedCoverName = this.coverImage.name;
+    } else {
+      this.selectedCoverName = '';
+    }
   }
-
   onBodyImagesSelected(event: any) {
     this.bodyImages = Array.from(event.target.files);
   }
@@ -71,6 +77,7 @@ export class PublicationComponent {
 
   isBoldActive = false;
   isUnderlineActive = false;
+  isLinkActive = false;
 
   ngAfterViewInit() {
     this.editor.nativeElement.innerHTML = this.request.content;
@@ -98,4 +105,14 @@ export class PublicationComponent {
     this.isBoldActive = document.queryCommandState('bold');
     this.isUnderlineActive = document.queryCommandState('underline');
   }
+
+  addLink() {
+    const url = prompt('Introduce la URL del enlace:');
+    if (url) {
+      document.execCommand('createLink', false, url);
+      this.editor.nativeElement.focus();
+      this.onInput();
+    }
+  }
+
 }

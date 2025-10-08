@@ -22,38 +22,38 @@
   margin-bottom: 20px;
 }
 
-input[type="text"],
-textarea {
+input[type="text"] {
   width: 100%;
   padding: 15px;
   font-size: 16px;
   outline: none;
   transition: border-color 0.2s;
   box-sizing: border-box;
-}
-
-input[type="text"] {
   border: none;
   border-bottom: 2px solid #ddd;
   font-weight: bold;
 }
 
+
 input[type="text"]:focus {
   border-color: #007bff;
 }
 
-textarea {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  line-height: 1.6;
-  min-height: 250px;
-  /* ajustado para móviles */
-  resize: none;
+.portada {
+  display: flex;
 }
 
-textarea:focus {
-  border-color: #007bff;
+.addCover {
+  padding: 5px;
 }
+
+.coverName {
+  font-size: small;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+
 
 .btn-submit {
   padding: 12px;
@@ -84,8 +84,7 @@ textarea:focus {
     font-size: 24px;
   }
 
-  input[type="text"],
-  textarea {
+  input[type="text"] {
     font-size: 16px;
     padding: 12px;
   }
@@ -125,23 +124,42 @@ textarea:focus {
 
 /*EDITOR DE TEXTO*/
 .toolbar {
-  margin-bottom: 8px;
+  background-color: lightgrey;
 }
 
-button {
+.text-button {
+  background: none;
+  /* Quita el fondo */
+  border: none;
+  /* Quita el borde */
   padding: 5px 10px;
+  /* Espaciado interno opcional */
   margin-right: 4px;
+  /* Espaciado entre botones */
+  cursor: pointer;
+  /* Muestra el puntero al pasar */
+  font-size: 16px;
+  /* Ajusta el tamaño del texto */
+}
+
+.text-button:focus {
+  outline: none;
+  /* Quita el contorno al hacer foco */
+}
+
+.text-button:hover {
+  color: #00000063;
+  /* Color opcional al pasar el mouse */
 }
 
 button.active {
-  background-color: #007bff;
-  color: white;
+  background-color: rgba(152, 147, 147, 0.465);
   font-weight: bold;
 }
 
 .editor {
   border: 1px solid #ccc;
-  min-height: 100px;
+  min-height: 200px;
   padding: 8px;
   outline: none;
 }
