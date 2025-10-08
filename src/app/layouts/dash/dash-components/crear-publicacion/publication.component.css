@@ -53,15 +53,28 @@ input[type="text"]:focus {
   margin-left: 5px;
 }
 
+.addImages {
+  padding: 5px;
+}
+
+.imagesName {
+  font-size: small;
+  padding: 5px;
+  margin-left: 5px;
+  text-align: end;
+}
+
+
 
 
 .btn-submit {
-  padding: 12px;
+  padding: 10px;
   background: #22215B;
   color: white;
   border: none;
   cursor: pointer;
   transition: background 0.3s;
+  width: 15%;  
 }
 
 .btn-submit:hover {

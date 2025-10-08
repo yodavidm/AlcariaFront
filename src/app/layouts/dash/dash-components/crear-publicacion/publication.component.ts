@@ -28,6 +28,7 @@ export class PublicationComponent {
 
   coverImage!: File;
   selectedCoverName: string = '';
+  selectedImagesName: string[] = [];
 
   bodyImages: File[] = [];
 
@@ -39,8 +40,19 @@ export class PublicationComponent {
       this.selectedCoverName = '';
     }
   }
+
   onBodyImagesSelected(event: any) {
-    this.bodyImages = Array.from(event.target.files);
+    const input = event.target as HTMLInputElement;
+    const newFiles = Array.from(input.files || []);
+
+    if (!this.bodyImages) {
+      this.bodyImages = [];
+    }
+
+    this.bodyImages = this.bodyImages.concat(newFiles);
+
+    // Limpiar el input para que se puedan volver a seleccionar los mismos archivos
+    input.value = '';
   }
 
   addPublication() {

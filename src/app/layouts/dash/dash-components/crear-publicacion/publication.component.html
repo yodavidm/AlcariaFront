@@ -1,36 +1,9 @@
-<!--
-<div class="form-container">
-  <input type="file" (change)="onCoverSelected($event)">
-  <h2>Añadir portada</h2>
-  <form (ngSubmit)="addPublication()">
-    <div class="form-group">
-      <input type="text" id="titulo" name="titulo" placeholder="Escribe un título atractivo..."
-        [(ngModel)]='request.title'>
-    </div>
-
-    <div class="form-group">
-      <textarea id="descripcion" name="descripcion" placeholder="Escribe tu contenido aquí..."
-        [(ngModel)]='request.content'></textarea>
-    </div>
-
-    <div class="buttons">
-      <button type="submit" class="btn-submit">Publicar</button>
-      <input type="file" multiple (change)="onBodyImagesSelected($event)">
-    </div>
-
-  </form>
-</div>
--->
-
-
-
-
 <div class="form-container">
 
   <div class="portada">
-    <button type="button" (click)="fileInput.click()" style="margin-bottom: 2em;" class="addCover">
+    <button type="button" (click)="coverInput.click()" style="margin-bottom: 2em;" class="addCover">
       <span>🖼️ Añadir portada</span>
-      <input #fileInput type="file" accept="image/*" (change)="onCoverSelected($event)" style="display:none;" />
+      <input #coverInput type="file" accept="image/*" (change)="onCoverSelected($event)" style="display:none;" />
     </button>
 
     <div *ngIf="selectedCoverName" class="coverName">
@@ -71,7 +44,18 @@
 
     <div class="buttons">
       <button type="submit" class="btn-submit">Publicar</button>
-      <input type="file" multiple (change)="onBodyImagesSelected($event)">
+      <div class="image-list">
+        <button type="button" (click)="listInput.click()" style="margin-bottom: 2em;" class="addImages">
+          <span>📸 Añadir imágnes</span>
+          <input #listInput type="file" accept="image/*" (change)="onBodyImagesSelected($event)" style="display:none;"
+            multiple />
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="bodyImages?.length" class="imagesName">
+      {{ bodyImages.length }} imágenes{{ bodyImages.length > 1 ? 's' : '' }} seleccionada{{ bodyImages.length > 1 ?
+      's' : '' }}
     </div>
 
   </form>
