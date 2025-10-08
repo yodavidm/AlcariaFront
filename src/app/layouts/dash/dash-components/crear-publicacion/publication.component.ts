@@ -4,6 +4,8 @@ import { PubliRequest } from '../../../../interfaces/dash-faces/publi-request';
 import { PubliResponse } from '../../../../interfaces/dash-faces/publi-response';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { ErrorResponse } from '../../../../interfaces/main-faces/error-response';
 
 @Component({
   selector: 'app-publication',
@@ -14,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class PublicationComponent {
 
-  constructor(private publiService: PublicationService) { }
+  constructor(private publiService: PublicationService, private toastr: ToastrService) { }
 
   request: PubliRequest = {
     title: '',
@@ -56,8 +58,16 @@ export class PublicationComponent {
         this.request.title = '';
         this.request.content = '';
       },
-      error: er => {
-        alert("Error: " + er.message);
+      error: err => {
+        const apiErr = err.error as ErrorResponse;
+        // 👇 Aquí llegan las excepciones que lanza el backend
+        if (apiErr.status === 400) {
+          this.toastr.warning(apiErr.message);
+        }
+        else {
+          console.error(apiErr);
+          this.toastr.error('Error inesperado en el servidor');
+        }
       }
     });
   }
