@@ -10,10 +10,12 @@
             {{publication.content}}
         </p>
 
+
         <div class="body-images">
             <div class="images" *ngFor="let imagen of publication.bodyImagesUrl">
                 <img [src]="'http://localhost:8080' + imagen" alt="cover" class="list-image">
             </div>
         </div>
     </div>
+
 </div>

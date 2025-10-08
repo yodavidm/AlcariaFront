@@ -47,30 +47,23 @@
     white-space: pre-wrap;
 }
 
+
 .body-images {
     margin-top: 3em;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 100%;
-    justify-content: center;
+    flex-wrap: wrap;      /* permite que las imágenes salten a otra fila */
+    gap: 10px;            /* espacio entre imágenes */
 }
 
-.images {
-    width: 300px;
+.body-images .images {
+    flex: 1 1 calc(33.33% - 10px);  /* máximo 3 por fila */
+    box-sizing: border-box;          /* incluye el gap en el ancho */
 }
 
-.list-image {
-    /* 3 por fila con gap */
-    width: 300px;
-    height: 300px;
-    border-radius: 6px;
-    object-fit: cover;
-}
-
-@media (max-width: 600px) {
-    .body-image {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
+.body-images .images img {
+    width: 100%;       /* ocupa todo el contenedor de su div */
+    height: auto;      /* mantiene proporción original */
+    object-fit: cover; /* recorta si hace falta */
+    display: block;    /* elimina espacios extra debajo de la imagen */
+    border-radius: 6px; /* opcional: estética */
 }
