@@ -66,7 +66,7 @@ export class PublicationComponent {
 
     this.publiService.addPublication(formData).subscribe({
       next: data => {
-        alert(`Publicación creada: ${data.title}`);
+        this.toastr.success('Noticia creada con éxito.');
         this.request.title = '';
         this.request.content = '';
         this.editor.nativeElement.innerHTML = ''; // Limpiamos el editor también
@@ -127,7 +127,7 @@ export class PublicationComponent {
     }
   }
 
-   //evitar copiar y pegar imágenes
+  //evitar copiar y pegar imágenes
   onPaste(event: ClipboardEvent) {
     // Evitar pegar imágenes (archivos o data:image)
     const items = event.clipboardData?.items;
