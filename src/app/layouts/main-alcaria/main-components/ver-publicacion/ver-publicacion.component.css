@@ -90,3 +90,8 @@
     transform: rotate(360deg);
   }
 }
+
+.goToPublication:hover{
+    cursor: pointer;
+    filter: brightness(1.1);
+}

@@ -2,7 +2,7 @@
 
   <div class="portada">
     <button type="button" (click)="coverInput.click()" style="margin-bottom: 2em;" class="addCover">
-      <span>🖼️ Añadir portada</span>
+      <span>🖼️ Cambiar portada</span>
       <input #coverInput type="file" accept="image/*" (change)="onCoverSelected($event)" style="display:none;" />
     </button>
 
@@ -12,8 +12,8 @@
   </div>
 
 
-  <h2>Crear noticia</h2>
-  <form (ngSubmit)="addPublication()">
+  <h2>Editar noticia</h2>
+  <form (ngSubmit)="editPublication()">
     <div class="form-group">
       <input type="text" id="titulo" name="titulo" placeholder="Escribe un título atractivo..."
         [(ngModel)]='request.title'>
@@ -44,10 +44,10 @@
     <!--FIN DE EDITOR-->
 
     <div class="buttons">
-      <button type="submit" class="btn-submit">Publicar</button>
+      <button type="submit" class="btn-submit">Actualizar</button>
       <div class="image-list">
         <button type="button" (click)="listInput.click()" style="margin-bottom: 2em;" class="addImages">
-          <span>📸 Añadir imágnes</span>
+          <span>📸 Añadir imágenes</span>
           <input #listInput type="file" accept="image/*" (change)="onBodyImagesSelected($event)" style="display:none;"
             multiple />
         </button>
@@ -55,7 +55,7 @@
     </div>
 
     <div *ngIf="bodyImages?.length" class="imagesName">
-      {{ bodyImages.length }} imágenes{{ bodyImages.length > 1 ? 's' : '' }} seleccionada{{ bodyImages.length > 1 ?
+      {{ bodyImages.length }} imágen{{ bodyImages.length > 1 ? 'es' : '' }} seleccionada{{ bodyImages.length > 1 ?
       's' : '' }}
     </div>
 

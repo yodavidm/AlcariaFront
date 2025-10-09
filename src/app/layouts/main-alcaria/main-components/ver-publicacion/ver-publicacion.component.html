@@ -1,5 +1,5 @@
 <div class="publication-container" *ngIf="!loading">
-    <h1 class="title">{{publication.title}}</h1>
+    <h1 class="title">{{publication.title}}<a class="goToPublication" title="Editar noticia" (click)="goToPublication(publication.id)"> 📝</a></h1>
 
     <div class="cover-container">
         <img [src]="'http://localhost:8080' + publication.coverImageUrl" alt="cover" class="cover-image">

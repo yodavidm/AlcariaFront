@@ -11,6 +11,7 @@ import { PublicationComponent } from './layouts/dash/dash-components/crear-publi
 import { VerPublicacionesComponent } from './layouts/dash/dash-components/ver-publicaciones/ver-publicaciones.component';
 import { UsersComponent } from './layouts/dash/dash-components/ver-users/users.component';
 import { VerPublicacionComponent } from './layouts/main-alcaria/main-components/ver-publicacion/ver-publicacion.component';
+import { EditarPublicacionComponent } from './layouts/dash/dash-components/editar-publicacion/editar-publicacion.component';
 
 export const routes: Routes = [
     {
@@ -37,7 +38,7 @@ export const routes: Routes = [
             { path: 'publicaciones', component: VerPublicacionesComponent },
             { path: 'uploadCSV', component: UploadCsvComponent },
             { path: 'users', component: UsersComponent },
-
+            { path: 'editar-publicacion/:id', component: EditarPublicacionComponent },
 
         ]
     }

@@ -1,0 +1,177 @@
+.form-container {
+  background: #fff;
+  padding: 1em;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  width: 800px;
+  margin: 0 auto;
+  /* centrado */
+  margin-top: 2em;
+  box-sizing: border-box;
+}
+
+.form-container h2 {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #222;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
+}
+
+
+input[type="text"]:focus {
+  border-color: #007bff;
+}
+
+.portada {
+  display: flex;
+}
+
+.addCover {
+  padding: 5px;
+}
+
+.coverName {
+  font-size: small;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+.addImages {
+  padding: 5px;
+}
+
+.imagesName {
+  font-size: small;
+  padding: 5px;
+  margin-left: 5px;
+  text-align: end;
+}
+
+
+
+
+.btn-submit {
+  padding: 10px;
+  background: #22215B;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 15%;  
+}
+
+.btn-submit:hover {
+  background: #0056b3;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 1.5em;
+    width: 95%;
+  }
+
+  .form-container h2 {
+    font-size: 24px;
+  }
+
+  input[type="text"] {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .btn-foto {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-top: 4px;
+  }
+
+  .buttons {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 1em;
+  }
+
+  .form-container h2 {
+    font-size: 20px;
+  }
+
+  textarea {
+    min-height: 150px;
+  }
+}
+
+
+/*EDITOR DE TEXTO*/
+.toolbar {
+  background-color: lightgrey;
+}
+
+.text-button {
+  background: none;
+  /* Quita el fondo */
+  border: none;
+  /* Quita el borde */
+  padding: 5px 10px;
+  /* Espaciado interno opcional */
+  margin-right: 4px;
+  /* Espaciado entre botones */
+  cursor: pointer;
+  /* Muestra el puntero al pasar */
+  font-size: 16px;
+  /* Ajusta el tamaño del texto */
+}
+
+.text-button:focus {
+  outline: none;
+  /* Quita el contorno al hacer foco */
+}
+
+.text-button:hover {
+  color: #00000063;
+  /* Color opcional al pasar el mouse */
+}
+
+button.active {
+  background-color: rgba(152, 147, 147, 0.465);
+  font-weight: bold;
+}
+
+.editor {
+  border: 1px solid #ccc;
+  min-height: 200px;
+  padding: 8px;
+  outline: none;
+}

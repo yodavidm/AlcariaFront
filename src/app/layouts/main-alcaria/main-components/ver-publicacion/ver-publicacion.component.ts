@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { PublicationService } from '../../../../services/dash-services/publication.service';
 import { PubliResponse } from '../../../../interfaces/dash-faces/publi-response';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-ver-publicacion',
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class VerPublicacionComponent {
 
-  constructor(private service: PublicationService, private route: ActivatedRoute) { }
+  constructor(private service: PublicationService, private route: ActivatedRoute,private router:Router) { }
 
   loading = true;
 
@@ -47,6 +47,13 @@ export class VerPublicacionComponent {
           }
         });
       }
+    });
+  }
+
+  goToPublication(id: string) {
+    if (!id) return;
+    this.router.navigate(['dashboard/editar-publicacion', id]).then(() => {
+      window.scrollTo(0, 0);
     });
   }
 

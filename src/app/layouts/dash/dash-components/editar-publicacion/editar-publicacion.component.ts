@@ -1,28 +1,33 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { PublicationService } from '../../../../services/dash-services/publication.service';
 import { PubliRequest } from '../../../../interfaces/dash-faces/publi-request';
-import { PubliResponse } from '../../../../interfaces/dash-faces/publi-response';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { PublicationService } from '../../../../services/dash-services/publication.service';
+import { PubliResponse } from '../../../../interfaces/dash-faces/publi-response';
 import { ErrorResponse } from '../../../../interfaces/main-faces/error-response';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-publication',
+  selector: 'app-editar-publicacion',
   imports: [FormsModule, CommonModule],
-  standalone: true,
-  templateUrl: './publication.component.html',
-  styleUrl: './publication.component.css'
+  templateUrl: './editar-publicacion.component.html',
+  styleUrl: './editar-publicacion.component.css'
 })
-export class PublicationComponent {
+export class EditarPublicacionComponent {
 
-  constructor(private publiService: PublicationService, private toastr: ToastrService) { }
+  constructor(private publiService: PublicationService, private toastr: ToastrService, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.getPublicationById();
+  }
 
   // ---------- PUBLICACIÓN ----------
   request: PubliRequest = {
     title: '',
     content: ''
   };
+
 
   publicaciones: PubliResponse[] = [];
 
@@ -31,6 +36,25 @@ export class PublicationComponent {
   selectedImagesName: string[] = [];
 
   bodyImages: File[] = [];
+
+  getPublicationById() {
+    const id = this.route.snapshot.paramMap.get('id'); // ✅ forma correcta
+
+    if (id) {
+      this.publiService.getPublicationById(id).subscribe({
+        next: data => {
+          this.request = data;
+          if (this.editor && this.editor.nativeElement) {
+            this.editor.nativeElement.innerHTML = this.request.content || '';
+          }
+        },
+        error: err => {
+          alert("Error recuperando publicación");
+          console.error(err);
+        }
+      });
+    }
+  }
 
   onCoverSelected(event: any) {
     this.coverImage = event.target.files[0];
@@ -54,8 +78,37 @@ export class PublicationComponent {
     // Limpiar el input para que se puedan volver a seleccionar los mismos archivos
     input.value = '';
   }
+  /*
+    addPublication() {
+      const formData = new FormData();
+      formData.append('request', new Blob([JSON.stringify(this.request)], { type: 'application/json' }));
+  
+      if (this.coverImage) formData.append('coverImage', this.coverImage);
+      if (this.bodyImages && this.bodyImages.length > 0) {
+        for (let img of this.bodyImages) formData.append('bodyImages', img);
+      }
+  
+      this.publiService.addPublication(formData).subscribe({
+        next: data => {
+          alert(`Publicación creada: ${data.title}`);
+          this.request.title = '';
+          this.request.content = '';
+          this.editor.nativeElement.innerHTML = ''; // Limpiamos el editor también
+        },
+        error: err => {
+          const apiErr = err.error as ErrorResponse;
+          if (apiErr.status === 400) {
+            this.toastr.warning(apiErr.message);
+          } else {
+            console.error(apiErr);
+            this.toastr.error('Error inesperado en el servidor');
+          }
+        }
+      });
+    }
+      */
 
-  addPublication() {
+  editPublication() {
     const formData = new FormData();
     formData.append('request', new Blob([JSON.stringify(this.request)], { type: 'application/json' }));
 
@@ -64,23 +117,25 @@ export class PublicationComponent {
       for (let img of this.bodyImages) formData.append('bodyImages', img);
     }
 
-    this.publiService.addPublication(formData).subscribe({
-      next: data => {
-        alert(`Publicación creada: ${data.title}`);
-        this.request.title = '';
-        this.request.content = '';
-        this.editor.nativeElement.innerHTML = ''; // Limpiamos el editor también
-      },
-      error: err => {
-        const apiErr = err.error as ErrorResponse;
-        if (apiErr.status === 400) {
-          this.toastr.warning(apiErr.message);
-        } else {
-          console.error(apiErr);
-          this.toastr.error('Error inesperado en el servidor');
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (id) {
+      this.publiService.editPublication(formData, id).subscribe({
+        next: data => {
+          this.request = data;
+          this.toastr.success('Noticia actualizada correctamente')
+        },
+        error: err => {
+          const apiErr = err.error as ErrorResponse;
+          if (apiErr.status === 400) {
+            this.toastr.warning(apiErr.message);
+          } else {
+            console.error(apiErr);
+            this.toastr.error('Error inesperado en el servidor');
+          }
         }
-      }
-    });
+      })
+    }
   }
 
 
@@ -127,7 +182,7 @@ export class PublicationComponent {
     }
   }
 
-   //evitar copiar y pegar imágenes
+  //evitar copiar y pegar imágenes
   onPaste(event: ClipboardEvent) {
     // Evitar pegar imágenes (archivos o data:image)
     const items = event.clipboardData?.items;
@@ -158,5 +213,4 @@ export class PublicationComponent {
     // Impide que el navegador intente insertar la imagen
     event.preventDefault();
   }
-
 }

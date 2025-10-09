@@ -40,4 +40,11 @@ export class PublicationService {
     return this.http.post<PubliResponse>(this.baseUrl + '/add', formData, { headers });
   }
 
+  editPublication(formData: FormData, id: string): Observable<PubliResponse> {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.put<PubliResponse>(this.baseUrl + '/update/' + id, formData, { headers })
+  }
+
 }
