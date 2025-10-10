@@ -28,6 +28,15 @@ export class EditarPublicacionComponent {
     content: ''
   };
 
+  response:PubliResponse ={
+    id: '',
+    createdAt: '',
+    title: '',
+    content: '',
+    coverImageUrl: '',
+    bodyImagesUrl: []
+  }
+
 
   publicaciones: PubliResponse[] = [];
 
@@ -37,15 +46,17 @@ export class EditarPublicacionComponent {
 
   bodyImages: File[] = [];
 
+  newBodyImagesUrls:string[] = [];
+
   getPublicationById() {
     const id = this.route.snapshot.paramMap.get('id'); // ✅ forma correcta
 
     if (id) {
       this.publiService.getPublicationById(id).subscribe({
         next: data => {
-          this.request = data;
+          this.response = data;
           if (this.editor && this.editor.nativeElement) {
-            this.editor.nativeElement.innerHTML = this.request.content || '';
+            this.editor.nativeElement.innerHTML = this.response.content || '';
           }
         },
         error: err => {
@@ -65,19 +76,21 @@ export class EditarPublicacionComponent {
     }
   }
 
-  onBodyImagesSelected(event: any) {
-    const input = event.target as HTMLInputElement;
-    const newFiles = Array.from(input.files || []);
+ onBodyImagesSelected(event: any) {
+  const input = event.target as HTMLInputElement;
+  const newFiles = Array.from(input.files || []);
 
-    if (!this.bodyImages) {
-      this.bodyImages = [];
-    }
+  // Añadimos los nuevos Files a la lista
+  this.bodyImages.push(...newFiles);
 
-    this.bodyImages = this.bodyImages.concat(newFiles);
+  // Creamos una URL temporal para previsualizarlas
+  newFiles.forEach(file => {
+    const previewUrl = URL.createObjectURL(file);
+    this.newBodyImagesUrls.push(previewUrl);
+  });
 
-    // Limpiar el input para que se puedan volver a seleccionar los mismos archivos
-    input.value = '';
-  }
+  input.value = ''; // limpiar input
+}
 
 
   editPublication() {
