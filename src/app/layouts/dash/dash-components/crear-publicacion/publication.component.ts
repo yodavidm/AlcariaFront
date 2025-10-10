@@ -70,6 +70,8 @@ export class PublicationComponent {
         this.request.title = '';
         this.request.content = '';
         this.editor.nativeElement.innerHTML = ''; // Limpiamos el editor también
+        setTimeout(() => window.location.reload(), 2000);
+
       },
       error: err => {
         const apiErr = err.error as ErrorResponse;

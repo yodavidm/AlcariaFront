@@ -78,35 +78,7 @@ export class EditarPublicacionComponent {
     // Limpiar el input para que se puedan volver a seleccionar los mismos archivos
     input.value = '';
   }
-  /*
-    addPublication() {
-      const formData = new FormData();
-      formData.append('request', new Blob([JSON.stringify(this.request)], { type: 'application/json' }));
-  
-      if (this.coverImage) formData.append('coverImage', this.coverImage);
-      if (this.bodyImages && this.bodyImages.length > 0) {
-        for (let img of this.bodyImages) formData.append('bodyImages', img);
-      }
-  
-      this.publiService.addPublication(formData).subscribe({
-        next: data => {
-          alert(`Publicación creada: ${data.title}`);
-          this.request.title = '';
-          this.request.content = '';
-          this.editor.nativeElement.innerHTML = ''; // Limpiamos el editor también
-        },
-        error: err => {
-          const apiErr = err.error as ErrorResponse;
-          if (apiErr.status === 400) {
-            this.toastr.warning(apiErr.message);
-          } else {
-            console.error(apiErr);
-            this.toastr.error('Error inesperado en el servidor');
-          }
-        }
-      });
-    }
-      */
+
 
   editPublication() {
     const formData = new FormData();
