@@ -16,7 +16,7 @@
   <form (ngSubmit)="editPublication()">
     <div class="form-group">
       <input type="text" id="titulo" name="titulo" placeholder="Escribe un título atractivo..."
-        [(ngModel)]='response.title'>
+        [(ngModel)]='requestImages.title'>
     </div>
 
     <!--EDITOR PARA PONER NEGRITAS,DELINEADO,ENLACE...-->
@@ -54,15 +54,20 @@
       </div>
     </div>
 
-    <div *ngIf="bodyImages?.length" class="imagesName">
-  <div *ngFor="let img of newBodyImagesUrls" class="pene">
-    <img [src]="img" alt="nueva imagen" width="30px">
-  </div>
+
+
+    <div class="imagesContainer" *ngIf="requestImages.newBodyImagesUrl?.length">
+      <!--Fotos que ya estaban en la noticia-->
+      <div class="current" *ngFor="let img of requestImages.newBodyImagesUrl"><img [src]="'http://localhost:8080' + img"
+          alt="img" width="50px"></div>
+
+      <!--Fotos nuevas añadidas a la noticia-->
+      <div class="newImages" *ngFor="let img of previewImagesToAdd">
+        <img [src]="img" alt="nueva imagen" width="50px" height="30px">
+      </div>
     </div>
 
-    <div class="currentImgs" *ngFor="let url of response.bodyImagesUrl">
-      <img [src]="'http://localhost:8080' + url"  alt="img" width="30px">
-    </div>
+
 
   </form>
 </div>

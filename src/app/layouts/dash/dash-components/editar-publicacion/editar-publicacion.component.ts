@@ -7,6 +7,7 @@ import { ErrorResponse } from '../../../../interfaces/main-faces/error-response'
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { PubliRequestImages } from '../../../../interfaces/dash-faces/publi-request-images';
 
 @Component({
   selector: 'app-editar-publicacion',
@@ -23,12 +24,13 @@ export class EditarPublicacionComponent {
   }
 
   // ---------- PUBLICACIÓN ----------
-  request: PubliRequest = {
+  requestImages: PubliRequestImages = {
     title: '',
-    content: ''
-  };
+    content: '',
+    newBodyImagesUrl: []
+  }
 
-  response:PubliResponse ={
+  response: PubliResponse = {
     id: '',
     createdAt: '',
     title: '',
@@ -46,7 +48,7 @@ export class EditarPublicacionComponent {
 
   bodyImages: File[] = [];
 
-  newBodyImagesUrls:string[] = [];
+  previewImagesToAdd: string[] = [];
 
   getPublicationById() {
     const id = this.route.snapshot.paramMap.get('id'); // ✅ forma correcta
@@ -54,9 +56,12 @@ export class EditarPublicacionComponent {
     if (id) {
       this.publiService.getPublicationById(id).subscribe({
         next: data => {
-          this.response = data;
+          this.requestImages.title = data.title;
+          this.requestImages.content = data.content;
+          this.requestImages.newBodyImagesUrl = data.bodyImagesUrl;
+
           if (this.editor && this.editor.nativeElement) {
-            this.editor.nativeElement.innerHTML = this.response.content || '';
+            this.editor.nativeElement.innerHTML = this.requestImages.content || '';
           }
         },
         error: err => {
@@ -76,30 +81,35 @@ export class EditarPublicacionComponent {
     }
   }
 
- onBodyImagesSelected(event: any) {
-  const input = event.target as HTMLInputElement;
-  const newFiles = Array.from(input.files || []);
+  onBodyImagesSelected(event: any) {
+    const input = event.target as HTMLInputElement;
+    const newFiles = Array.from(input.files || []);
 
-  // Añadimos los nuevos Files a la lista
-  this.bodyImages.push(...newFiles);
+    if (!this.bodyImages) {
+      this.bodyImages = [];
+    }
 
-  // Creamos una URL temporal para previsualizarlas
-  newFiles.forEach(file => {
-    const previewUrl = URL.createObjectURL(file);
-    this.newBodyImagesUrls.push(previewUrl);
-  });
+    this.bodyImages = this.bodyImages.concat(newFiles);
 
-  input.value = ''; // limpiar input
-}
+    // Creamos una URL temporal para previsualizarlas
+    newFiles.forEach(file => {
+      const previewUrl = URL.createObjectURL(file);
+      this.previewImagesToAdd.push(previewUrl);
+    });
+
+
+    input.value = ''; // limpiar input
+  }
 
 
   editPublication() {
+
     const formData = new FormData();
-    formData.append('request', new Blob([JSON.stringify(this.request)], { type: 'application/json' }));
+    formData.append('request', new Blob([JSON.stringify(this.requestImages)], { type: 'application/json' }));
 
     if (this.coverImage) formData.append('coverImage', this.coverImage);
     if (this.bodyImages && this.bodyImages.length > 0) {
-      for (let img of this.bodyImages) formData.append('bodyImages', img);
+      for (let img of this.bodyImages) formData.append('newBodyImages', img);
     }
 
     const id = this.route.snapshot.paramMap.get('id');
@@ -107,7 +117,7 @@ export class EditarPublicacionComponent {
     if (id) {
       this.publiService.editPublication(formData, id).subscribe({
         next: data => {
-          this.request = data;
+          this.response = data;
           this.toastr.success('Noticia actualizada correctamente')
         },
         error: err => {
@@ -132,11 +142,11 @@ export class EditarPublicacionComponent {
   isLinkActive = false;
 
   ngAfterViewInit() {
-    this.editor.nativeElement.innerHTML = this.request.content;
+    this.editor.nativeElement.innerHTML = this.requestImages.content;
   }
 
   onInput() {
-    this.request.content = this.editor.nativeElement.innerHTML;
+    this.requestImages.content = this.editor.nativeElement.innerHTML;
   }
 
   toggleBold() {

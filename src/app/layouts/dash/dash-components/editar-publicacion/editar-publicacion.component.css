@@ -175,3 +175,9 @@ button.active {
   padding: 8px;
   outline: none;
 }
+
+.imagesContainer{
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+}
