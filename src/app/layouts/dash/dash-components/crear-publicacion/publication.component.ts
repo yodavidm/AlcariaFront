@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ErrorResponse } from '../../../../interfaces/main-faces/error-response';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-publication',
   imports: [FormsModule, CommonModule],
@@ -27,19 +29,31 @@ export class PublicationComponent {
   publicaciones: PubliResponse[] = [];
 
   coverImage!: File;
+  coverImagePreview: string = '';
   selectedCoverName: string = '';
   selectedImagesName: string[] = [];
 
   bodyImages: File[] = [];
+  previewImagesToAdd: string[] = [];
 
   onCoverSelected(event: any) {
     this.coverImage = event.target.files[0];
     if (this.coverImage) {
       this.selectedCoverName = this.coverImage.name;
+
+      const input = event.target as HTMLInputElement;
+      const newFiles = Array.from(input.files || []);
+      // Creamos una URL temporal para previsualizarlas
+      newFiles.forEach(file => {
+        const previewUrl = URL.createObjectURL(file);
+        this.coverImagePreview = previewUrl;
+      });
+
     } else {
       this.selectedCoverName = '';
     }
   }
+
 
   onBodyImagesSelected(event: any) {
     const input = event.target as HTMLInputElement;
@@ -51,10 +65,15 @@ export class PublicationComponent {
 
     this.bodyImages = this.bodyImages.concat(newFiles);
 
-    // Limpiar el input para que se puedan volver a seleccionar los mismos archivos
-    input.value = '';
-  }
+    // Creamos una URL temporal para previsualizarlas
+    newFiles.forEach(file => {
+      const previewUrl = URL.createObjectURL(file);
+      this.previewImagesToAdd.push(previewUrl);
+    });
 
+
+    input.value = ''; // limpiar input
+  }
   addPublication() {
     const formData = new FormData();
     formData.append('request', new Blob([JSON.stringify(this.request)], { type: 'application/json' }));
@@ -83,6 +102,45 @@ export class PublicationComponent {
         }
       }
     });
+  }
+
+  confirmImageDelete(image: string | File, isFile: boolean = false) {
+    Swal.fire({
+      title: '¿Quieres eliminar esta imagen?',
+      text: 'Esta acción no se puede deshacer.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (isFile) {
+          // 🔹 Buscar el índice del previewUrl (image en este caso es la URL)
+          const index = this.previewImagesToAdd.indexOf(image as string);
+
+          if (index > -1) {
+            // 🧠 Liberar memoria del blob URL
+            URL.revokeObjectURL(this.previewImagesToAdd[index]);
+
+            // ❌ Eliminar de ambas listas
+            this.previewImagesToAdd.splice(index, 1);
+            this.bodyImages.splice(index, 1);
+          }
+        }
+      }
+
+      Swal.fire({
+        title: 'Eliminada',
+        text: 'La imagen ha sido eliminada.',
+        icon: 'success',
+        timer: 1200,
+        showConfirmButton: false,
+        width: '250px'
+      });
+    }
+    );
   }
 
 

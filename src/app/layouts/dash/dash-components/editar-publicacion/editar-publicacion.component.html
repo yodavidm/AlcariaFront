@@ -6,8 +6,8 @@
       <input #coverInput type="file" accept="image/*" (change)="onCoverSelected($event)" style="display:none;" />
     </button>
 
-    <div *ngIf="selectedCoverName" class="coverName">
-      {{ selectedCoverName }}
+    <div *ngIf="coverImagePreview" class="coverName">
+      <img [src]="coverImagePreview" width="50px" height="30px" alt="foto" style=" margin-left: 5px;">
     </div>
   </div>
 

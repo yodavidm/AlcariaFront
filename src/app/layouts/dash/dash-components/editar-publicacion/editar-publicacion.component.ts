@@ -46,6 +46,7 @@ export class EditarPublicacionComponent {
   publicaciones: PubliResponse[] = [];
 
   coverImage!: File;
+  coverImagePreview: string = '';
   selectedCoverName: string = '';
   selectedImagesName: string[] = [];
 
@@ -79,6 +80,15 @@ export class EditarPublicacionComponent {
     this.coverImage = event.target.files[0];
     if (this.coverImage) {
       this.selectedCoverName = this.coverImage.name;
+
+      const input = event.target as HTMLInputElement;
+      const newFiles = Array.from(input.files || []);
+      // Creamos una URL temporal para previsualizarlas
+      newFiles.forEach(file => {
+        const previewUrl = URL.createObjectURL(file);
+        this.coverImagePreview = previewUrl;
+      });
+
     } else {
       this.selectedCoverName = '';
     }

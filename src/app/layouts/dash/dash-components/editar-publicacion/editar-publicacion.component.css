@@ -46,12 +46,6 @@ input[type="text"]:focus {
   padding: 5px;
 }
 
-.coverName {
-  font-size: small;
-  padding: 5px;
-  margin-left: 5px;
-}
-
 .addImages {
   padding: 5px;
 }

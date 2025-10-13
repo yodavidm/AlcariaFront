@@ -6,8 +6,8 @@
       <input #coverInput type="file" accept="image/*" (change)="onCoverSelected($event)" style="display:none;" />
     </button>
 
-    <div *ngIf="selectedCoverName" class="coverName">
-      {{ selectedCoverName }}
+    <div *ngIf="coverImagePreview" class="coverName">
+      <img [src]="coverImagePreview" width="50px" height="30px" alt="foto" style=" margin-left: 5px;">
     </div>
   </div>
 
@@ -54,9 +54,9 @@
       </div>
     </div>
 
-    <div *ngIf="bodyImages?.length" class="imagesName">
-      {{ bodyImages.length }} imágenes{{ bodyImages.length > 1 ? 's' : '' }} seleccionada{{ bodyImages.length > 1 ?
-      's' : '' }}
+    <div *ngIf="previewImagesToAdd?.length" class="imagesContainer">
+      <div class="addImagen" *ngFor="let url of previewImagesToAdd"><img [src]="url" alt="pic" width="50px"
+          height="30px" (click)="confirmImageDelete(url,true)"></div>
     </div>
 
   </form>
