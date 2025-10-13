@@ -9,6 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PubliRequestImages } from '../../../../interfaces/dash-faces/publi-request-images';
 
+import Swal from 'sweetalert2';
+
+
 @Component({
   selector: 'app-editar-publicacion',
   imports: [FormsModule, CommonModule],
@@ -132,6 +135,53 @@ export class EditarPublicacionComponent {
       })
     }
   }
+
+
+  confirmImageDelete(image: string | File, isFile: boolean = false) {
+    Swal.fire({
+      title: '¿Quieres eliminar esta imagen?',
+      text: 'Esta acción no se puede deshacer.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (isFile) {
+          // 🔹 Buscar el índice del previewUrl (image en este caso es la URL)
+          const index = this.previewImagesToAdd.indexOf(image as string);
+
+          if (index > -1) {
+            // 🧠 Liberar memoria del blob URL
+            URL.revokeObjectURL(this.previewImagesToAdd[index]);
+
+            // ❌ Eliminar de ambas listas
+            this.previewImagesToAdd.splice(index, 1);
+            this.bodyImages.splice(index, 1);
+          }
+        } else {
+          // 🗑️ Si es una imagen del backend (URL normal)
+          this.requestImages.newBodyImagesUrl = this.requestImages.newBodyImagesUrl.filter(
+            (imageUrl: string) => imageUrl !== image
+          );
+        }
+
+        Swal.fire({
+          title: 'Eliminada',
+          text: 'La imagen ha sido eliminada.',
+          icon: 'success',
+          timer: 1200,
+          showConfirmButton: false,
+          width: '250px'
+        });
+      }
+    });
+  }
+
+
+
 
 
   // ---------- EDITOR DE TEXTO ----------

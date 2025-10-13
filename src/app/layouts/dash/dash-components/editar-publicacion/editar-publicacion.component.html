@@ -56,14 +56,16 @@
 
 
 
-    <div class="imagesContainer" *ngIf="requestImages.newBodyImagesUrl?.length">
+    <div class="imagesContainer" *ngIf="requestImages.newBodyImagesUrl?.length || previewImagesToAdd?.length">
       <!--Fotos que ya estaban en la noticia-->
-      <div class="current" *ngFor="let img of requestImages.newBodyImagesUrl"><img [src]="'http://localhost:8080' + img"
-          alt="img" width="50px"></div>
+      <div class="current" *ngFor="let url of requestImages.newBodyImagesUrl"><img [src]="'http://localhost:8080' + url"
+          alt="img" width="50px" (click)="confirmImageDelete(url,false)">
+      </div>
 
       <!--Fotos nuevas añadidas a la noticia-->
       <div class="newImages" *ngFor="let img of previewImagesToAdd">
-        <img [src]="img" alt="nueva imagen" width="50px" height="30px">
+        <img [src]="img" alt="nueva imagen" width="50px" height="30px" (click)="confirmImageDelete(img,true)"
+          class="addImagen">
       </div>
     </div>
 
