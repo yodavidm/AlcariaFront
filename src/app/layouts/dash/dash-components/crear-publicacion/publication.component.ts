@@ -129,18 +129,17 @@ export class PublicationComponent {
             this.bodyImages.splice(index, 1);
           }
         }
-      }
 
-      Swal.fire({
-        title: 'Eliminada',
-        text: 'La imagen ha sido eliminada.',
-        icon: 'success',
-        timer: 1200,
-        showConfirmButton: false,
-        width: '250px'
-      });
-    }
-    );
+        Swal.fire({
+          title: 'Eliminada',
+          text: 'La imagen ha sido eliminada.',
+          icon: 'success',
+          timer: 1200,
+          showConfirmButton: false,
+          width: '250px'
+        });
+      }
+    });
   }
 
 
