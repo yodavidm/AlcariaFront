@@ -4,6 +4,7 @@
       <tr>
         <th>Nombre Completo</th>
         <th>Email</th>
+        <th>Especialidad</th>
         <th>Departamento</th>
         <th>IdeaUser</th>
         <th>Coordinador</th>
@@ -14,7 +15,8 @@
       <tr *ngFor="let user of users">
         <td>{{user.completeName}}</td>
         <td>{{user.email}}</td>
-        <td>{{user.department}}</td>
+        <td>{{user.specialization}}</td>
+        <td>{{user.departmentName}}</td>
         <td>{{user.ideaUser}}</td>
         <td [ngClass]="user.coordinator ? 'active' : 'inactive'">
           {{ user.coordinator ? 'Sí' : 'No' }}

@@ -1,6 +1,7 @@
 export interface UserResponse {
     completeName: string;
-    department: string;
+    specialization: string;
+    departmentName: string;
     email: string;
     ideaUser: string;
     coordinator:boolean;
